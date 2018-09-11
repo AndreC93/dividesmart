@@ -8,8 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --mode=development"
+    "postinstall": "webpack --watch --mode=production"
   },
   "repository": {
     "type": "git",
@@ -39,8 +38,5 @@
   "engines": {
     "node": "10.6.0",
     "npm": "6.1.0"
-  },
-  "scripts": {
-    "postinstall": "webpack --watch --mode=production"
   }
 }
