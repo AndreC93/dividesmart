@@ -1,5 +1,12 @@
 {
   "name": "dividesmart",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": "10.6.0",
+    "npm": "6.1.0"
+  },
+  "scripts": {
+    "postinstall": "webpack --watch --mode=production"
+  }
 }
