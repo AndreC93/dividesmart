@@ -1,8 +1,8 @@
 import React from 'react';
-import LoginForm from './login_form_container';
-import SignupForm from './signup_form_container';
+import LoginButton from './login_form_button';
+// import SignupForm from './signup_form_container';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout } from '../actions/session_actions';
 
 class TopBar extends React.Component {
@@ -10,8 +10,8 @@ class TopBar extends React.Component {
     let rightSideOfBar;
     if (this.props.currentUser) {
       rightSideOfBar = (
-        <div>
-          <img src={this.props.currentUser.imageUrl} />
+        <div className='top-bar-right'>
+          <img src={window.imageBootStrap} />
           <ul>
             <li><Link to='/'>Your account</Link></li>
             <li><button onClick={ this.props.logout }>Log out</button></li>
@@ -20,18 +20,15 @@ class TopBar extends React.Component {
       );
     } else {
       rightSideOfBar = (
-        <div>
-          <span>
-            <Route path='/' component={ LoginForm } />
-          </span>
-          <span>
-            <Route path='/signup' component={ SignupForm } />
-          </span>
+        <div className='top-bar-right'>
+          <LoginButton />
+          <p>or</p>
+          <Link to='/signup'>Sign up</Link>
         </div>
       );
     }
     return (
-      <div>
+      <div className={"top-bar"}>
         <h1>DIVIDESMART</h1>
         {rightSideOfBar}
       </div>

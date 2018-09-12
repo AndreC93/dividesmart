@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 
 class Errors extends React.Component {
   render () {
-    return (
-      <div>
-        <ul>
-          {this.props.errors.session.map((error, i)=> <li key={i * Math.random()} >{error}</li>)}
-        </ul>
-      </div>
-    );
+    if (this.props.errors.session.length) {
+      return (
+        <div>
+          <ul>
+            {this.props.errors.session.map((error, i)=> <li key={i * Math.random()} >{error}</li>)}
+          </ul>
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
   }
 }
 

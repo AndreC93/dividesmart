@@ -2,11 +2,18 @@
 
 <% if current_user %>
   <script type="text/javascript">
-    window.currentUser = <%= 
+    window.currentUser = <%=
       render(
         'api/users/user.json.jbuilder',
         user: current_user
       ).html_safe
-    %>
+    %>;
+  </script>
+<% end %>
+
+<% if current_user %>
+  <script type="text/javascript">
+    window.imageBootStrap =
+    "<%= asset_path(current_user.image_url) %>"
   </script>
 <% end %>

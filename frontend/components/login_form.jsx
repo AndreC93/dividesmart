@@ -19,11 +19,11 @@ class LoginForm extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="login-form">
         <form onSubmit={this.handleSubmit}>
-          <input type='text' onChange={this.update('email')} value={this.state.email} />
+          <input placeholder='Email address' type='text' onChange={this.update('email')} value={this.state.email} />
           <br/>
-          <input type='password' onChange={this.update('password')} value={this.state.password} />
+          <input placeholder='Password' type='password' onChange={this.update('password')} value={this.state.password} />
           <br/>
           <button>Log in to Dividesmart</button>
         </form>
