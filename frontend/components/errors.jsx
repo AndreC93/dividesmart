@@ -6,7 +6,7 @@ class Errors extends React.Component {
     return (
       <div>
         <ul>
-          {this.props.errors.map(error => <li>{error}</li>)}
+          {this.props.errors.session.map((error, i)=> <li key={i * Math.random()} >{error}</li>)}
         </ul>
       </div>
     );
