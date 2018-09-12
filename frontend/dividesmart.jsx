@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Root from './components/root';
-// import configureStore from './store/store';
+import Root from './components/root';
+import configureStore from './store/store';
 import * as SessionApiUtil from './util/session_api_util';
 
-function checkCurrentUser() {
+function checkCurrentUser () {
   if (window.currentUser) {
     return {
       entities: {
         users: {
           [window.currentUser.id]: window.currentUser,
-        }
+        },
       },
       session: {
         currentUserId: window.currentUser.id,
@@ -24,8 +24,8 @@ function checkCurrentUser() {
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   window.api = SessionApiUtil;
-  // const preloadedState = checkCurrentUser();
-  // const store = configureStore(preloadedState);
-  // ReactDOM.render(<Root store={store} />, root);
-  ReactDOM.render(<h1>Welcome</h1>, root);
+  const preloadedState = checkCurrentUser();
+  const store = configureStore(preloadedState);
+  window.getState = store.getState;
+  ReactDOM.render(<Root store={store} />, root);
 });
