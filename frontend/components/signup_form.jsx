@@ -19,21 +19,27 @@ class SignupForm extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='signup-form'>
         <form onSubmit={this.handleSubmit}>
           <h2>INTRODUCE YOURSELF</h2>
 
           <label>Hi there! My name is
+            <br/>
             <input type='text' onChange={this.update('username')} value={this.state.username} />
           </label>
+          <br/>
 
           <label>Here's my <strong>email address</strong>:
+            <br/>
             <input type='text' onChange={this.update('email')} value={this.state.email} />
           </label>
+          <br/>
 
           <label>And here's my <strong>password</strong>:
+            <br/>
             <input type='password' onChange={this.update('password')} value={this.state.password} />
           </label>
+          <br/>
 
           <button>Sign me up!</button>
         </form>

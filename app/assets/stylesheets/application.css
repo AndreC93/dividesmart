@@ -16,3 +16,30 @@
 html {
   font-family: 'Lato', sans-serif;
 }
+
+input {
+  line-height: 18px;
+  text-align: left;
+  background-color: white;
+  border: 1px solid #cccccc;
+  margin-bottom: 8px;
+  color: black;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.075);
+}
+
+::placeholder {
+    color: #aaaaaa;
+    opacity: 1;
+}
+
+input:focus::placeholder {
+    color: #d1d1d1;
+}
+
+input:focus {
+  box-shadow: 0 0 5px blue;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
