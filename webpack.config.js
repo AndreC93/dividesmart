@@ -4,10 +4,10 @@ module.exports = {
   entry: path.join(__dirname, "frontend", "dividesmart.jsx"),
   output: {
     path: path.join(__dirname, "app", "assets", "javascripts"),
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js", ".jsx", "*"],
   },
   devtool: "source-map",
   module: {
@@ -17,11 +17,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/env', '@babel/react']
-          }
+            presets: ['@babel/env', '@babel/react'],
+          },
         },
-        exclude: /node_modules/
-      }
-    ]
-  }
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };
