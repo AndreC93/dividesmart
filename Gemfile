@@ -41,10 +41,10 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'bcrypt'
   gem 'faker'
 end
 gem 'jquery-rails'
+gem 'bcrypt'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
