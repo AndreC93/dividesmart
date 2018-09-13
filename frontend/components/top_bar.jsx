@@ -10,7 +10,7 @@ class TopBar extends React.Component {
     if (this.props.currentUser) {
       rightSideOfBar = (
         <div className='top-bar-right'>
-          <img src={window.imageBootStrap} />
+          <img src={window.defaultAvatar} />
           <ul>
             <li><Link to='/'>Your account</Link></li>
             <li><button onClick={ this.props.logout }>Log out</button></li>

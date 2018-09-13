@@ -9,6 +9,7 @@ class SignupForm extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showOtherInputs = this.showOtherInputs.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field) {
@@ -22,6 +23,16 @@ class SignupForm extends React.Component {
 
   showOtherInputs() {
     return $('.slideout').css('max-height', '600px');
+  }
+
+  demoLogin() {
+    this.showOtherInputs();
+    this.setState({
+      username: 'Divider',
+      email: 'demo@login.com',
+      password: 'demologin',
+    }, () => setTimeout(() => this.props.login(this.state), 750));
+
   }
 
   render () {
@@ -55,6 +66,8 @@ class SignupForm extends React.Component {
           </div>
 
           <button>Sign me up!</button>
+          <span>or</span>
+          <a onClick={ this.demoLogin } className='demo-button'>Demo Login</a>
         </form>
       </div>
     );

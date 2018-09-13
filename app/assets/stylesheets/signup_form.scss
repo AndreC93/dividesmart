@@ -50,12 +50,16 @@
       }
     }
 
+    span {
+      font-size: 20px;
+    }
+
     button {
       padding: 11px 15px;
       display: inline-block;
       width: auto;
       font-size: 24px;
-      margin-top: 9px;
+      margin: 9px 6px 0 0;
       background-color: #ff652f;
       text-shadow: 0 -1px 0 #c83400;
       color: white;
