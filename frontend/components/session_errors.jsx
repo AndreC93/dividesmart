@@ -10,6 +10,7 @@ class SessionErrors extends React.Component {
             <strong>The following errors occurred:</strong>
             {this.props.errors.session.map((error, i)=> <li key={i * Math.random()} >{error}</li>)}
           </ul>
+          <br/>
         </div>
       );
     }

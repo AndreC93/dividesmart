@@ -222,6 +222,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
+  bundler (~> 1.16)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
