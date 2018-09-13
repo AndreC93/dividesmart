@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LoginForm extends React.Component {
+class LoginFormDropDown extends React.Component {
   constructor(props) {
     super(props);
     this.state = props.form;
@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state);
+    this.props.open();
   }
 
   render () {
@@ -32,4 +33,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default LoginFormDropDown;

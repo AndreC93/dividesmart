@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from './login_form_container';
+import LoginForm from './login_form_drop_down_container';
 
 class LoginFormButton extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class LoginFormButton extends React.Component {
       <div>
         <button onClick={this._onClick} className='login-button'>Log in</button>
         {this.state.showComponent ?
-           <LoginForm /> :
+           <LoginForm open={ this._onClick } /> :
            null
         }
       </div>

@@ -32,12 +32,17 @@ class SignupForm extends React.Component {
       email: 'demo@login.com',
       password: 'demologin',
     }, () => setTimeout(() => this.props.login(this.state), 750));
+  }
 
+  componentDidMount() {
+    if (this.props.errors.includes('Invalid credentials')) {
+      this.props.clearErrors();
+    }
   }
 
   render () {
     return (
-      <div className='signup-form'>
+      <div className='a-signup-form'>
         <Link to='/' ><img src={window.mainImage} /></Link>
 
         <form onSubmit={this.handleSubmit}>

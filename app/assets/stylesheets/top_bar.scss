@@ -6,10 +6,12 @@
   font-size: 20px;
   background-color: #5ec5a7;
   color: white;
-  h1 {
+
+  a {
     vertical-align: middle;
-    padding: 17px 10px;
+    padding: 11px 10px;
   }
+
   button {
     text-shadow: 0 -1px 0 #318970;
   }
@@ -17,12 +19,60 @@
 
 .top-bar-right {
   display: flex;
-  font-size: 16px;
-  margin: 10px 10px;
-  padding: 5px;
+  font-size: 14px;
+  margin: auto 0;
+
   div, a, p {
     margin-right: 4px;
   }
+
+  p {
+    margin-top: 5px;
+  }
+}
+
+.top-bar-right-default {
+  button, a {
+    &:hover {
+      background-color: #52a58e;
+    }
+
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+
+  a {
+    height: 16px;
+    font-size: 14px;
+    padding-bottom: 6px;
+    background-color: #ff652f;
+    text-shadow: 0 -1px 0 #c83400;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.075);
+    &:hover {
+      background-color: #de4d24;
+    }
+  }
+}
+
+.top-bar-right-logged-in {
+
+  padding: 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #52a58e;
+
+    b {
+      color: white;
+    }
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
 }
 
 .login-button {

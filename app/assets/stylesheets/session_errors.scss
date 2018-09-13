@@ -1,5 +1,6 @@
 .session-errors {
   float: left;
+  min-width: 320px;
   background-color: #c45;
   text-shadow: 0 -1px #9a2a38;
   padding: 5px 10px 15px 15px;
@@ -9,6 +10,7 @@
   line-height: 36px;
   list-style: disc;
   margin: 15px 10px 0 0;
+  
   li {
     display: list-item;
     line-height: 22px;

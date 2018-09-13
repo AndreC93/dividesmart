@@ -1,25 +1,24 @@
 import React from 'react';
 import LoginButton from './login_form_button';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { logout } from '../actions/session_actions';
+import DropDownMenuButton from './drop_down_menu_button';
 
 class TopBar extends React.Component {
+
   render () {
     let rightSideOfBar;
     if (this.props.currentUser) {
       rightSideOfBar = (
-        <div className='top-bar-right'>
+        <div className='top-bar-right top-bar-right-logged-in'>
           <img src={window.defaultAvatar} />
-          <ul>
-            <li><Link to='/'>Your account</Link></li>
-            <li><button onClick={ this.props.logout }>Log out</button></li>
-          </ul>
+          <DropDownMenuButton />
         </div>
       );
     } else {
       rightSideOfBar = (
-        <div className='top-bar-right'>
+        <div className='top-bar-right top-bar-right-default'>
           <LoginButton />
           <p>or</p>
           <Link to='/signup' className='signup-button'>Sign up</Link>
@@ -28,7 +27,7 @@ class TopBar extends React.Component {
     }
     return (
       <div className={"top-bar"}>
-        <h1>DIVIDESMART</h1>
+        <Link to='/'>DIVIDESMART</Link>
         {rightSideOfBar}
       </div>
     );
@@ -43,4 +42,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopBar));
