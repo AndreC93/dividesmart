@@ -1,7 +1,7 @@
 import React from 'react';
 import TopBar from './top_bar';
 import { Route, Switch } from 'react-router-dom';
-import Errors from './errors';
+// import SessionErrors from './session_errors';
 import SignupForm from './signup_form_container';
 // import { AuthRoute } from '../util/route_util';
 
@@ -12,9 +12,9 @@ const App = () => {
         <Route exact path='/signup' component={ SignupForm } />
         <TopBar />
       </Switch>
-      <Route path='/' component={ Errors } />
     </div>
   );
 };
 
+// <Route path='/' component={ SessionErrors } />
 export default App;

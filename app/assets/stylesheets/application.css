@@ -39,7 +39,6 @@ input:focus::placeholder {
 
 input:focus {
   box-shadow: 0 0 5px blue;
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
+  transition: border linear 0.2s;
   border: 1px solid rgba(81, 203, 238, 1);
 }

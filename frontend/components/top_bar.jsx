@@ -1,6 +1,5 @@
 import React from 'react';
 import LoginButton from './login_form_button';
-// import SignupForm from './signup_form_container';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../actions/session_actions';
@@ -23,7 +22,7 @@ class TopBar extends React.Component {
         <div className='top-bar-right'>
           <LoginButton />
           <p>or</p>
-          <Link to='/signup'>Sign up</Link>
+          <Link to='/signup' className='signup-button'>Sign up</Link>
         </div>
       );
     }
