@@ -1,6 +1,7 @@
 import React from 'react';
 import SessionErrors from './session_errors';
 import { Link } from 'react-router-dom';
+import Footer from './footer';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -35,31 +36,34 @@ class LoginPage extends React.Component {
 
   render () {
     return (
-      <div className='login-page'>
-        <Link to='/' ><img src={ window.mainImage } /></Link>
+      <div>
+        <div className='login-page'>
+          <Link to='/' ><img src={ window.mainImage } /></Link>
 
-        <form onSubmit={ this.handleSubmit }>
-          <h2>WELCOME TO DIVIDESMART</h2>
-          <SessionErrors />
+          <form onSubmit={ this.handleSubmit }>
+            <h2>WELCOME TO DIVIDESMART</h2>
+            <SessionErrors />
 
-          <br/>
-
-          <p>Email address:
             <br/>
-          </p>
-          <input type='text' onChange={ this.update('email') } value={this.state.email} />
-          <br/>
 
-          <p>Password:
+            <p>Email address:
+              <br/>
+            </p>
+            <input type='text' onChange={ this.update('email') } value={this.state.email} />
             <br/>
-          </p>
-          <input type='password' onChange={ this.update('password') } value={this.state.password} />
-          <br/>
 
-          <button>Log in</button>
-          <span>or</span>
-          <a onClick={ this.demoLogin } className='demo-button'>Demo Login</a>
-        </form>
+            <p>Password:
+              <br/>
+            </p>
+            <input type='password' onChange={ this.update('password') } value={this.state.password} />
+            <br/>
+
+            <button>Log in</button>
+            <span>or</span>
+            <a onClick={ this.demoLogin } className='demo-button'>Demo Login</a>
+          </form>
+        </div>
+        <Footer />
       </div>
     );
   }

@@ -1,13 +1,16 @@
 .login-form {
+  transition: max-height 0.2s ease-out, padding 0.2s ease-in, border 0.22s ease-in;
   font-size: 14px;
   display: block;
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
   z-index: 99;
   position: absolute;
-  right: 0px;
+  right: 20px;
   top: 49px;
-  padding: 10px;
   background-color: #eee;
-  border: 1px solid #ccc;
   border-radius: 0 0 5px 5px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.4);
   text-align: center;
@@ -16,15 +19,24 @@
   input {
     width: 300px;
   }
-  
-  button {
+
+  button:first-of-type {
     margin: 8px 4px 10px 0;
     padding: 4px, 10px;
     background-color: #5ec5a7;
-    padding: 10px;
+    padding: 4px 10px;
     width: 100%;
     height: auto;
     border-radius: 5px;
+  }
+
+  a:last-of-type {
+    display: inline-block;
+    padding: 4px 10px;
+    width: 100%;
+    height: auto;
+    margin: 0 4px 10px 0;
+    cursor: pointer;
   }
 
   button:hover {

@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
     email: '',
     password: '',
   },
+  modal: state.modal.show,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+  has_many :friendships
+  has_many :friends, through: :friendships, source: :friend
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
