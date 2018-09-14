@@ -20,7 +20,6 @@
 .top-bar-right {
   display: flex;
   font-size: 14px;
-  margin: auto 0;
 
   div, a, p {
     margin-right: 4px;
@@ -32,13 +31,24 @@
 }
 
 .top-bar-right-default {
+  margin: auto 0;
+
   button, a {
     &:hover {
       background-color: #52a58e;
     }
-
     padding: 4px 10px;
     border-radius: 5px;
+  }
+
+  button {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 5px;
+    font-size: 14px;
+    border: 1px solid;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    padding: 10px, 4px;
   }
 
   a {
@@ -55,8 +65,8 @@
 }
 
 .top-bar-right-logged-in {
-
   padding: 12px;
+  padding-bottom: 0;
   cursor: pointer;
 
   &:hover {
@@ -73,14 +83,12 @@
     border-radius: 50%;
   }
 
-}
+  button, b {
+    margin-top: 5px;
+  }
 
-.login-button {
-  display: inline-block;
-  vertical-align: baseline;
-  margin-left: 5px;
-  font-size: 14px;
-  border: 1px solid;
-  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-  padding: 10px, 4px;
+  b {
+    font-size: 9px;
+  }
+
 }
