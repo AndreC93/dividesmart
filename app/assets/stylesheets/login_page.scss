@@ -1,3 +1,87 @@
 .login-page {
-  margin-top: 60px;
+  line-height: 36px;
+  font-size: 18px;
+  width: auto;
+  max-width: 600px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  margin-top: 110px;
+
+  ul {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: #999;
+    font-weight: 1000;
+    line-height: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 5px;
+  }
+
+  form {
+    float: left;
+    display: block;
+    width: 95%;
+    max-width: 360px;
+    padding-left: 15px;
+    font-size: 24px;
+    margin: 16px 0 5px;
+    line-height: 140%;
+    vertical-align: middle;
+  }
+
+  input {
+    width: 247px;
+    height: 24px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  img {
+    float: left;
+    margin-right: 25px;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    width: 200px;
+    height: 200px;
+    display: block;
+  }
+
+  button, a:last-child {
+    padding: 9px 14px;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 10px 10px 0 0;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  button {
+    width: 60px;
+    background-color: #ff652f;
+    text-shadow: 0 -1px 0 #c83400;
+  }
+
+  button:hover {
+    background-color: #de4d24;
+  }
+
+  a:last-child {
+    width: 94px;
+    margin-left: 10px;
+  }
+
+  span {
+    font-size: 16px;
+  }
 }

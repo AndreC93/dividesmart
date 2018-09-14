@@ -17,7 +17,7 @@ class LoginPage extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(this.state);
+    this.props.login(this.state);
   }
 
   demoLogin() {
@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
 
   render () {
     return (
-      <div className='a-signup-form login-page'>
+      <div className='login-page'>
         <Link to='/' ><img src={ window.mainImage } /></Link>
 
         <form onSubmit={ this.handleSubmit }>
@@ -44,16 +44,16 @@ class LoginPage extends React.Component {
 
           <br/>
 
-          <label>Email address:
+          <p>Email address:
             <br/>
-            <input type='text' onChange={ this.update('email') } value={this.state.email} />
-          </label>
+          </p>
+          <input type='text' onChange={ this.update('email') } value={this.state.email} />
           <br/>
 
-          <label>Password:
+          <p>Password:
             <br/>
-            <input type='password' onChange={ this.update('password') } value={this.state.password} />
-          </label>
+          </p>
+          <input type='password' onChange={ this.update('password') } value={this.state.password} />
           <br/>
 
           <button>Log in</button>

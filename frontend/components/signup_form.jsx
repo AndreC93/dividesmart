@@ -13,19 +13,16 @@ class SignupForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({[field]: e.target.value});
+    return e => this.setState({ [field]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    delete this.state.maxHeight;
     this.props.signup(this.state);
   }
 
   showOtherInputs() {
-    this.setState({
-      maxHeight: 600,
-    });
+    this.setState({ maxHeight: 600 });
   }
 
   demoLogin() {
@@ -38,18 +35,16 @@ class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.errors.includes('Invalid credentials')) {
-      this.props.clearErrors();
-    }
+    this.props.clearErrors();
   }
 
   render () {
-    const maxHeight = { maxHeight:this.state.maxHeight };
+    const maxHeight = { maxHeight: this.state.maxHeight };
     return (
       <div className='a-signup-form'>
-        <Link to='/' ><img src={window.mainImage} /></Link>
+        <Link to='/' ><img src={ window.mainImage } /></Link>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={ this.handleSubmit }>
           <h2>INTRODUCE YOURSELF</h2>
           <SessionErrors />
           <label>Hi there! My name is
@@ -57,19 +52,19 @@ class SignupForm extends React.Component {
             <input type='text' onChange={ (e) => {
                 this.showOtherInputs();
                 this.update('username')(e);
-              } } value={this.state.username}/>
+              } } value={ this.state.username }/>
           </label>
           <br/>
           <div className='slideout' style={ maxHeight } >
             <label>Here's my <strong>email address</strong>:
               <br/>
-              <input type='text' onChange={this.update('email')} value={this.state.email} />
+              <input type='text' onChange={ this.update('email') } value={ this.state.email } />
             </label>
             <br/>
 
             <label>And here's my <strong>password</strong>:
               <br/>
-              <input type='password' onChange={this.update('password')} value={this.state.password} />
+              <input type='password' onChange={ this.update('password') } value={ this.state.password } />
             </label>
             <br/>
           </div>

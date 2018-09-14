@@ -1,7 +1,7 @@
 .top-bar {
   position: fixed;
   display: flex;
-  width: 100%;
+  width: 91%;
   top: 0;
   left: 0;
   background: #5bc5a7;
@@ -15,6 +15,8 @@
   background-color: #5ec5a7;
   color: white;
   margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
 
   a {
     vertical-align: middle;
@@ -41,11 +43,8 @@
     }
   }
 
-  div, a, p {
-    margin-right: 4px;
-  }
-
   p {
+    margin: 0 8px;
     margin-top: 5px;
   }
 }
@@ -59,6 +58,7 @@
     }
     padding: 4px 10px;
     border-radius: 5px;
+    box-shadow: 0 0px #45937d, inset 0 1px #6ccfb8;
   }
 
   button {
@@ -76,8 +76,9 @@
     font-size: 14px;
     padding-bottom: 6px;
     background-color: #ff652f;
+    border: 1px solid #d35733;
     text-shadow: 0 -1px 0 #c83400;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: 0 1px #b04929, inset 0 1px #ed7d4e;
     &:hover {
       background-color: #de4d24;
     }
