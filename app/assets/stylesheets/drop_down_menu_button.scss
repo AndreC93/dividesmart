@@ -2,10 +2,13 @@
   vertical-align: middle;
   padding-left: 5px;
 
-  b {
-    color: #ffffff42;
-    opacity: 50%;
-    margin-left: 5px;
-    font-size: 8px;
+  i {
+    margin-top: 8px;
+    margin-left: 2px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: top;
+    opacity: 0.3;
   }
 }

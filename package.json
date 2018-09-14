@@ -26,6 +26,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "babel-loader": "^8.0.2",
     "lodash": "^4.17.10",
     "react": "^16.5.0",

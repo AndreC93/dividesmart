@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
     username: '',
     email: '',
     password: '',
+    maxHeight: 0,
   },
   errors: state.errors.session,
 });

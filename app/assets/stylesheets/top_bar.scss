@@ -1,15 +1,29 @@
 .top-bar {
-  position: relative;
+  position: fixed;
   display: flex;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #5bc5a7;
+  z-index: 99;
+  border-bottom: 1px solid #48be9d;
+  text-shadow: 0 -1px 0 #39a385;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
   justify-content: space-between;
   height: 48px;
   font-size: 20px;
   background-color: #5ec5a7;
   color: white;
+  margin: 0 auto;
 
   a {
     vertical-align: middle;
     padding: 11px 10px;
+  }
+
+  a:first-child {
+    letter-spacing: 8px;
+    font-family: bely bold;
   }
 
   button {
@@ -20,6 +34,12 @@
 .top-bar-right {
   display: flex;
   font-size: 14px;
+
+  &:hover {
+    i {
+      opacity: 1;
+    }
+  }
 
   div, a, p {
     margin-right: 4px;
@@ -65,8 +85,9 @@
 }
 
 .top-bar-right-logged-in {
-  padding: 12px;
+  padding: 5px;
   padding-bottom: 0;
+  margin-right: 18%;
   cursor: pointer;
 
   &:hover {
@@ -78,8 +99,8 @@
   }
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 27px;
+    height: 27px;
     border-radius: 50%;
   }
 
@@ -90,5 +111,13 @@
   b {
     font-size: 9px;
   }
+}
 
+@media only screen and (max-width: 980px) {
+  .top-bar-right-logged-in {
+    margin-right: 0;
+    float: right;
+    position: fixed;
+    left: 865px;
+  }
 }

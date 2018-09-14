@@ -18,11 +18,14 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    delete this.state.maxHeight;
     this.props.signup(this.state);
   }
 
   showOtherInputs() {
-    return $('.slideout').css('max-height', '600px');
+    this.setState({
+      maxHeight: 600,
+    });
   }
 
   demoLogin() {
@@ -41,6 +44,7 @@ class SignupForm extends React.Component {
   }
 
   render () {
+    const maxHeight = { maxHeight:this.state.maxHeight };
     return (
       <div className='a-signup-form'>
         <Link to='/' ><img src={window.mainImage} /></Link>
@@ -56,7 +60,7 @@ class SignupForm extends React.Component {
               } } value={this.state.username}/>
           </label>
           <br/>
-          <div className='slideout' >
+          <div className='slideout' style={ maxHeight } >
             <label>Here's my <strong>email address</strong>:
               <br/>
               <input type='text' onChange={this.update('email')} value={this.state.email} />

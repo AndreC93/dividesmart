@@ -9,7 +9,9 @@ class TopBar extends React.Component {
 
   render () {
     let rightSideOfBar;
+    let topBarStyles = { maxHeight: 'inherit', paddingLeft: 'inherit' };
     if (this.props.currentUser) {
+      topBarStyles = { maxHeight: 35, paddingLeft: '8%' };
       rightSideOfBar = (
         <div className='top-bar-right top-bar-right-logged-in'>
           <img src={window.defaultAvatar} />
@@ -26,7 +28,7 @@ class TopBar extends React.Component {
       );
     }
     return (
-      <div className={"top-bar"}>
+      <div className={'top-bar'} style={ topBarStyles }>
         <Link to='/'>DIVIDESMART</Link>
         {rightSideOfBar}
       </div>

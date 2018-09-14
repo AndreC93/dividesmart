@@ -1,67 +1,49 @@
 .splash-images {
   height: 250px;
-  padding: 23px 0;
+  padding: 0;
   display: flex;
   position: relative;
   width: 450px;
-  margin: 0 auto;
+  margin: 23px auto 23px;
 
   &:hover img {
     opacity: 0.5;
     z-index: 0;
 
     &:last-child {
-      left: -9.5%;
+      left: -7%;
     }
 
     &:first-child {
-      left: 66%;
+      left: -11%;
     }
   }
 
   img {
+    max-width: 100%;
+    height: auto;
     display: inline;
     height: 240px;
     width: 375px;
-    transition: left 0.20s ease-out, transform 0.25s ease-out;
+    transition: left 0.30s ease-out, transform 0.25s ease-out;
     cursor: pointer;
-    position: absolute;
+    position: relative;
 
     &:last-child {
       order: -1;
-      left: -13.5%;
+      left: -10%;
     }
 
     &:first-child {
       width: 120px;
-      left: 70%;
+      left: -8%;
     }
 
     &:hover {
-      // position: absolute;
       opacity: 1;
       z-index: 1;
-      // padding-right: 26px;
-      // transform: translate(-25px);
       transform: scale(1.1, 1.1);
     }
   }
 
 }
-
-// #first-img {
-//   &:hover {
-//     padding-left: 26px;
-//     transform: translate(25px);
-//     transform: scale(1.1, 1.1);
-//     & + img {
-//       opacity: 0.5;
-//       z-index: 0;
-//     }
-//   }
-// }
-
-// &:hover ~ img {
-//   opacity: 0.5;
-//   z-index: 0;
-// }

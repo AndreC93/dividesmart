@@ -21,7 +21,7 @@ class DropDownMenuButton extends React.Component {
     return (
       <div className='drop-down-menu-button'>
         <button onClick={ this._onClick }>{this.props.currentUser.username}</button>
-        <b>▼</b>
+        <i className="fas fa-caret-down"></i>
         {this.state.showComponent ?
            <DropDownMenu /> :
            null

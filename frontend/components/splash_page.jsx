@@ -10,7 +10,7 @@ class SplashPage extends React.Component {
           <img src={window.mainImage} />
           <h1>Divide expenses with friends.</h1>
         </div>
-        <h2><strong>Share</strong> bills and IOUs. <strong>Make sure</strong> everyone gets paid back. <strong>Totally free</strong> for web.</h2>
+        <h2><strong>Share</strong> bills and IOUs. <strong>Make sure</strong> everyone gets paid back. <strong>Totally free</strong> for web, iPhone, and Android.</h2>
         <SplashImages />
         <div>
           <Link to='/signup'>

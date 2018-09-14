@@ -1,16 +1,29 @@
 .splash-page {
+  position: relative;
+  top: 50px;
+  left: 0;
   text-rendering: optimizeLegibility;
   box-shadow: none;
   padding: 21px 10px 23px;
   width: auto;
   display: block;
-  color: #444444;
-  margin: 10px auto 10px;
+  color: #444;
+  margin: 0;
   text-align: center;
   line-height: 36px;
 
+  strong {
+    font-family: 'Lato';
+    font-weight: 400;
+    text-shadow: 1px 0 0 currentColor;
+  }
+  
   h2 {
     font-size: 21px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding: 0 20px;
+    line-height: 26px;
   }
 
   @media only screen and (max-width: 960px) {
