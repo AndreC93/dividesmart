@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   background: #5bc5a7;
-  z-index: 99;
+  z-index: 2;
   border-bottom: 1px solid #48be9d;
   text-shadow: 0 -1px 0 #39a385;
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
@@ -36,7 +36,6 @@
 .top-bar-right {
   display: flex;
   font-size: 14px;
-
   &:hover {
     i {
       opacity: 1;
@@ -53,12 +52,12 @@
   margin: auto 0;
 
   button, a {
-    &:hover {
-      background-color: #52a58e;
-    }
     padding: 4px 10px;
     border-radius: 5px;
     box-shadow: 0 0px #45937d, inset 0 1px #6ccfb8;
+    &:hover {
+      background-color: #52a58e;
+    }
   }
 
   button {
@@ -90,7 +89,6 @@
   padding-bottom: 0;
   margin-right: 18%;
   cursor: pointer;
-
   &:hover {
     background-color: #52a58e;
 

@@ -1,0 +1,27 @@
+.add-friend-form-input-item {
+  display: inline-block;
+  padding: 0 6px 0 8px;
+  background: #f6f6f6;
+  border-radius: 15px;
+  font-size: 14px;
+  height: 18px;
+  border: 1px solid #bbb;
+  float: center;
+  margin: 3px;
+  white-space: nowrap;
+  &:hover {
+    button {
+      color: black;
+    }
+    border: 1px solid #ABABAB;
+    background: #EEEEEE;
+  }
+
+  button {
+    cursor: pointer;
+    color: #aaa;
+    margin: 0 0 1px 5px;
+    font-weight: bold;
+    padding-right: 3px;
+  }
+}

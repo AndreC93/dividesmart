@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :friendships
-  has_many :friends, through: :friendships, source: :friend
+  has_many :friends
+  has_many :actual_friends, through: :friends, source: :friend
 
   def password=(password)
     @password = password

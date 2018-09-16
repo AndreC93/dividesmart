@@ -1,0 +1,116 @@
+.add-friend-form {
+  margin: 70px auto;
+  padding: 20px 25px;
+  width: 560px;
+  min-height: 103px;
+  font-size: 13px;
+  box-shadow: 0 2px 5px 2px #B4B4B4;
+  background: white;
+  opacity: 100%;
+  border-radius: 5px;
+  border: 1px solid #A8A8A8;
+  position: fixed;
+  left: 25%;
+  top: 0;
+
+  span {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    height: 30px;
+    align-items: baseline;
+    margin-bottom: 20px;
+
+    h1 {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 4px;
+    }
+
+    button {
+      color: #ccc;
+      &:hover {
+        color: #999999;
+      }
+    }
+  }
+
+  input{
+    box-shadow: none;
+    border: none;
+    padding: 5px 3px 3px;
+    width: 180px;
+    overflow: visible;
+    margin-top: 1px;
+    border-radius: 5px;
+    &:focus {
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  .invite-input-container {
+    width: 508px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0 10px;
+    align-items: baseline;
+    padding-left: 8px;
+    min-height: 18px;
+    height: auto;
+    overflow: wrap;
+    white-space: normal;
+
+    div:first-of-type {
+      width: 23px;
+      display: inline-block;
+      float: left;
+      margin-top: 7px;
+      font-weight: bold;
+    }
+  }
+
+  textarea {
+    min-height: 54px;
+    width: 508px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    &:focus::placeholder {
+      color: #d1d1d1;
+    }
+  }
+
+  div:last-child {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: #3889cd;
+      &:hover {
+        color: #4A5485;
+      }
+    }
+
+    button {
+      font-size: 18px;
+      color: white;
+      border: 1px solid;
+      border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+      background-color: #eb613a;
+      padding: 9px 14px;
+      border-radius: 5px;
+      &:hover {
+        background-color: #FF5000;
+      }
+    }
+  }
+}

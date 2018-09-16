@@ -18,6 +18,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(id: params[:id]).include(:actual_friends)
+    render json: :show
+  end
+
+  def index
+    @user = User.includes(:actual_friends).find_by(id: current_user.id)
+    render :index
+  end
+
   private
 
   def user_params

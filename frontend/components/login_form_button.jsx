@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from './login_form_drop_down_container';
 import { connect } from 'react-redux';
-import { showModal, hideModal } from '../actions/modal_actions';
+import { showLoginForm, hideLoginForm } from '../actions/modal_actions';
 
 class LoginFormButton extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class LoginFormButton extends React.Component {
   }
 
   _onClick() {
-    this.state.showComponent ? this.props.hideModal() : this.props.showModal();
+    this.state.showComponent ? this.props.hideLoginForm() : this.props.showLoginForm();
 
     this.setState(
       { showComponent: !this.state.showComponent }
@@ -31,8 +31,8 @@ class LoginFormButton extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  showModal: () => dispatch(showModal()),
-  hideModal: () => dispatch(hideModal()),
+  showLoginForm: () => dispatch(showLoginForm()),
+  hideLoginForm: () => dispatch(hideLoginForm()),
 });
 
 export default connect(null, mapDispatchToProps)(LoginFormButton);

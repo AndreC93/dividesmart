@@ -1,0 +1,17 @@
+.modal-backdrop {
+  opacity: 0.8;
+  background-color: #eee;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: opacity 0.15s linear;
+  display: block;
+}
+
+.modal {
+  // position: fixed;
+  z-index: 100;
+}

@@ -5,15 +5,12 @@
   position: relative;
   width: 450px;
   margin: 23px auto 23px;
-
   &:hover img {
     opacity: 0.5;
     z-index: 0;
-
     &:last-child {
       left: -7%;
     }
-
     &:first-child {
       left: -11%;
     }
@@ -28,17 +25,14 @@
     transition: left 0.30s ease-out, transform 0.25s ease-out;
     cursor: pointer;
     position: relative;
-
     &:last-child {
       order: -1;
       left: -10%;
     }
-
     &:first-child {
       width: 120px;
       left: -8%;
     }
-
     &:hover {
       opacity: 1;
       z-index: 1;
