@@ -1,0 +1,89 @@
+.friend-invite-page {
+  margin: 38px auto 0;
+  width: 600px;
+
+  header {
+    background: #5bc5a7;
+    color: white;
+    height: 44px;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    font-size: 24px;
+    letter-spacing: 12px;
+    margin-top: 5px;
+    vertical-align: middle;
+
+    div {
+      padding-top: 6px;
+    }
+  }
+
+  img {
+    width: 100px;
+    height: auto;
+  }
+
+  h1 {
+    display: flex;
+    height: 266px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #505050;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 20px;
+      text-align: center;
+      margin: 46px auto -8px;
+
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    p {
+      color: #999999;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    a {
+      display: block;
+      width: 202px;
+      background-color: #ff5216;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px 0;
+      border: 1px solid #c83400;
+      border-radius: 5px;
+      color: white;
+      margin: 0 auto;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 10px;
+    background: #F3F3F3;
+    color: #999999;
+
+    div {
+      padding: 10px;
+    }
+
+    a {
+      color: #6b8299;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

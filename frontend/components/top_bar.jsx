@@ -2,7 +2,7 @@ import React from 'react';
 import LoginButton from './login_form_button';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { logout } from '../actions/session_actions';
+import { logout, clearErrors } from '../actions/session_actions';
 import DropDownMenuButton from './drop_down_menu_button';
 
 class TopBar extends React.Component {
@@ -29,7 +29,7 @@ class TopBar extends React.Component {
     }
     return (
       <div className={ 'top-bar' } style={ topBarStyles }>
-        <Link to='/'>DIVIDESMART</Link>
+        <Link to='/' onClick={ () => this.props.clearErrors() } >DIVIDESMART</Link>
         {rightSideOfBar}
       </div>
     );
@@ -42,6 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
+  clearErrors: () => dispatch(clearErrors()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopBar));

@@ -4,6 +4,7 @@ export const SHOW_DROP_DOWN_MENU = 'SHOW_DROP_DOWN_MENU';
 export const HIDE_DROP_DOWN_MENU = 'HIDE_DROP_DOWN_MENU';
 export const SHOW_ADD_FRIEND_FORM = 'SHOW_ADD_FRIEND_FORM';
 export const HIDE_ADD_FRIEND_FORM = 'HIDE_ADD_FRIEND_FORM';
+export const CLEAR_ALL_MODALS = 'CLEAR_ALL_MODALS';
 
 export const showLoginForm = () => ({
   type: SHOW_LOGIN_FORM,
@@ -27,4 +28,8 @@ export const showAddFriendForm = () => ({
 
 export const hideAddFriendForm = () => ({
   type: HIDE_ADD_FRIEND_FORM,
+});
+
+export const clearAllModals = () => ({
+  type: CLEAR_ALL_MODALS,
 });

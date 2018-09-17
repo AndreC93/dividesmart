@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import AddFriendFormInputItem from './add_friend_form_input_item';
 import { Link } from 'react-router-dom';
 import { hideAddFriendForm } from '../actions/modal_actions';
+import { addFriends } from '../actions/friend_actions';
 
 class AddFriendForm extends React.Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class AddFriendForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.addFriends(this.state.namesAndEmails);
   }
 
   handleInputSubmit(e) {
@@ -74,7 +76,7 @@ class AddFriendForm extends React.Component {
     const placeholder = this.state.namesAndEmails.length === 0 ? 'Enter names or email addresses' : null;
     return (
       <div>
-        <div className='modal-backdrop' />
+        <div className='modal-backdrop' onClick={ () => this.props.hideAddFriendForm() } />
         <div className='add-friend-form modal'>
           <span>
             <h1>
@@ -118,6 +120,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   hideAddFriendForm: () => dispatch(hideAddFriendForm()),
+  addFriends: usernamesAndEmails => dispatch(addFriends(usernamesAndEmails)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddFriendForm);

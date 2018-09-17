@@ -19,4 +19,14 @@ class ApplicationController < ActionController::Base
     session[:session_token] = user.reset_session_token!
   end
 
+  def find_by_username_or_email(username_or_email)
+    if (username_or_email.include?('@') && username_or_email.include?('.'))
+      user = User.find_by(email: username_or_email)
+    else
+      user = User.find_by(username: username_or_email)
+    end
+
+    user ? user.id : nil
+  end
+
 end

@@ -1,14 +1,25 @@
 class Api::FriendsController < ApplicationController
   def create
-    @friendship = Friend.new(
-      friend_id: params[:id],
-      user_id: current_user.id
-    )
-    if @friendship.save
-      render json: @friendship
-    else
-      render json: @friendship.errors.full_messages, status: 422
+    debugger
+    friendships = params['usernamesAndEmails'].map do |username_or_email|
+      Friend.new(
+        friend_id: find_by_username_or_email(username_or_email),
+        user_id: current_user.id
+      )
     end
+
+    @savedFriends = []
+    @unsavedFriends = []
+
+    friendships.each do |friendship|
+      if friendship.save
+        @savedFriends << friendship.friend_id
+      else
+        @unsavedFriends << [friendship.friend_id, friendship.errors.full_messages]
+      end
+    end
+
+    render json: [@savedFriends, @unsavedFriends]
   end
 
   def destroy

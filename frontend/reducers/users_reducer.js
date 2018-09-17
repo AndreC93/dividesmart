@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../actions/friend_actions';
 import merge from 'lodash/merge';
 
@@ -15,6 +15,8 @@ export default function (state = {}, action) {
       newState = merge({}, state);
       delete newState[action.friendId];
       return newState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

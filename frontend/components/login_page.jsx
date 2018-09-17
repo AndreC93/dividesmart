@@ -38,7 +38,7 @@ class LoginPage extends React.Component {
     return (
       <div>
         <div className='login-page'>
-          <Link to='/' ><img src={ window.mainImage } /></Link>
+          <Link to='/' onClick={ () => this.props.clearErrors() } ><img src={ window.mainImage } /></Link>
 
           <form onSubmit={ this.handleSubmit }>
             <h2>WELCOME TO DIVIDESMART</h2>

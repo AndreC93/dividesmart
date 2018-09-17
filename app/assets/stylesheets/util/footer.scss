@@ -1,19 +1,20 @@
 .footer {
-  position: relative;
-  bottom: 0;
+    // padding-bottom: 60px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
   float: left;
   display: flex;
   justify-content: space-between;
   width: 88%;
   padding: 20px 6%;
   min-height: 74px;
-  position: relative;
   z-index: 1;
   background: #666;
   color: #fff;
   font-size: 14px;
   text-shadow: 0 -1px 0 #000000;
-  margin-top: 16.5%;
+  // margin-top: 16.5%;
   vertical-align: baseline;
 
   main {

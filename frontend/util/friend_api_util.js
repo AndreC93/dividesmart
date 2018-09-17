@@ -24,5 +24,14 @@ export const requestFriend = friendId => (
   $.ajax({
     method: 'GET',
     url: '/api/users/${friendId}',
+    data: { friendId },
+  })
+);
+
+export const addFriends = usernamesAndEmails => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/friends',
+    data: { usernamesAndEmails },
   })
 );
