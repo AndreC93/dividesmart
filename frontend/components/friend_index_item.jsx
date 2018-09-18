@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class FriendIndexItem extends React.Component {
   render () {
@@ -9,10 +9,12 @@ class FriendIndexItem extends React.Component {
       color: '#5bc5a7',
     };
     return (
-      <li style={ highlight }>
-        <Link to={ `/api/users/${this.props.friend.id}` } >
+      <li style={ highlight } onClick={ () => (
+          this.props.history.push(`/api/users/${this.props.friend.id}` )) }
+      >
+        <a>
           <i className='fas fa-user' ></i> { this.props.friend.username }
-        </Link>
+        </a>
       </li>
     );
   }

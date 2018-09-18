@@ -1,5 +1,4 @@
 .footer {
-    // padding-bottom: 60px;
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -14,7 +13,6 @@
   color: #fff;
   font-size: 14px;
   text-shadow: 0 -1px 0 #000000;
-  // margin-top: 16.5%;
   vertical-align: baseline;
 
   main {
@@ -37,5 +35,12 @@
     li {
       font-size: 14px;
     }
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .footer {
+    margin-top: 50px;
+    position: relative;
   }
 }

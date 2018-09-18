@@ -74,7 +74,13 @@ class AddFriendForm extends React.Component {
   }
 
   render () {
-    const placeholder = this.state.namesAndEmails.length === 0 ? 'Enter names or email addresses' : null;
+    let placeholder;
+    let inputWidth = {};
+    if (this.state.namesAndEmails.length === 0) {
+      placeholder = 'Enter names or email addresses';
+    } else {
+      inputWidth = { width: 'fit-content' }
+    }
 
     return (
       <div className='add-friend-form-container' >
@@ -95,8 +101,10 @@ class AddFriendForm extends React.Component {
               { this.makePreviousInputBubbles() }
               <input type='text'
                 value={ this.state.activeInput }
-                onChange={ this.updateActiveInput } placeholder={ placeholder }
+                onChange={ this.updateActiveInput }
+                placeholder={ placeholder }
                 onKeyPress= { this.handleInputSubmit }
+                style={ inputWidth }
                 />
             </div>
 

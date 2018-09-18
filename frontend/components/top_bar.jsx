@@ -26,7 +26,7 @@ class TopBar extends React.Component {
     if (this.props.currentUser) {
       topBarStyles = { maxHeight: 35, paddingLeft: '8%' };
       rightSideOfBar = (
-        <div className='top-bar-right top-bar-right-logged-in' onClick={ this._onClick } >
+        <div className='top-bar-right top-bar-right-logged-in' onClick={ this._onClick } onBlur={ this.props.hideDropDownMenu } tabIndex='0' >
           <img src={window.defaultAvatar} />
           <DropDownMenuButton currentUser={ this.props.currentUser } modal={ this.props.modal }/>
         </div>

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  image_url       :string           default("default_avatar.png")
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   validates :username, :email, :password_digest, :session_token, presence: true
   validates :email, :session_token, uniqueness: true
@@ -6,10 +20,11 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :friends
+  has_many :friends, foreign_key: :user_id, class_name: 'Friend'
   has_many :actual_friends, through: :friends, source: :friend
-  has_many :own_bills, foreign_key: :creator_id, class_name: 'Bill'
-  # has_many :bills, through: :payments
+  has_many :created_bills, foreign_key: :creator_id, class_name: 'Bill'
+  has_many :payments
+  has_many :bills, through: :payments
 
   def password=(password)
     @password = password
