@@ -1,6 +1,7 @@
 import React from 'react';
 import LeftSideBar from './left_side_bar';
 import CenterBar from './center_bar';
+import RightBar from './right_bar';
 
 class Dashboard extends React.Component {
 
@@ -9,6 +10,7 @@ class Dashboard extends React.Component {
       <div className='dashboard'>
         <LeftSideBar />
         <CenterBar />
+        <RightBar />
       </div>
     );
   }

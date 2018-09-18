@@ -11,14 +11,14 @@ class UserShowPage extends React.Component {
   render () {
     if (!this.props.user) return null;
     return (
-      <div className='user-show-page' >
+      <div className='center-bar-user-show' >
         <header>
-          <div>
-            <img src={ this.props.user.imageUrl } />
+          <main>
+            <img src={ window.defaultAvatar } />
             <h1>{ this.props.user.username }</h1>
-          </div>
+          </main>
           <div>
-            <button><div>Add a bill</div><i className="fas fa-caret-down"></i> </button>
+            <button>Add a bill  <i className="fas fa-caret-down"></i> </button>
             <button>Settle up</button>
           </div>
         </header>

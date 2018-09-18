@@ -30,12 +30,10 @@ class FriendsIndex extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  debugger;
-  return ({
+const mapStateToProps = state => ({
   friends: grabAllFriends(state),
   addFriendForm: state.modal.addFriendForm,
-})};
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchFriends: () => dispatch(fetchFriends()),

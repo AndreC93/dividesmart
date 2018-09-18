@@ -1,6 +1,5 @@
 class Api::FriendsController < ApplicationController
   def create
-    debugger
     friendships = params['usernamesAndEmails'].map do |username_or_email|
       Friend.new(
         friend_id: find_by_username_or_email(username_or_email),
@@ -26,7 +25,7 @@ class Api::FriendsController < ApplicationController
     @friendship = Friend.find_by(user_id: current_user.id, friend_id: params[:id])
     @friendship.destroy
 
-    render json: @friendship
+    render json: @friendship.friend_id if @friendship
   end
 
 end

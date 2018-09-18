@@ -9,7 +9,7 @@ export const addFriend = friendId => (
 export const removeFriend = friendId => (
   $.ajax({
     method: 'DELETE',
-    url: '/api/friends/${friendId}',
+    url: `/api/friends/${friendId}`,
   })
 );
 

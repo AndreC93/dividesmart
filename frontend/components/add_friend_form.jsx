@@ -42,6 +42,7 @@ class AddFriendForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addFriends(this.state.namesAndEmails);
+    this.props.hideAddFriendForm();
   }
 
   handleInputSubmit(e) {

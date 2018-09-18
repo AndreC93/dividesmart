@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { signup, login, clearErrors } from '../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger;
   let maxHeight = 600;
   if (ownProps.location.pathname === '/signup') maxHeight = 0;
   return {

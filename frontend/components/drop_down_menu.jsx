@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/session_actions';
 
 class DropDownMenu extends React.Component {
   render () {
     return (
-      <ul>
-        <li><Link to='/'>Your account</Link></li>
-        <li><button onClick={ this.props.logout }>Log out</button></li>
+      <ul className='drop-down-menu' >
+        <li>Your account</li>
+        <li onClick={ this.props.logout } >Log out</li>
       </ul>
     );
   }
