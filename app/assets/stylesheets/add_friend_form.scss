@@ -1,7 +1,12 @@
+.add-friend-form-container {
+  height: 66vh;
+  position: absolute;
+  left: 97%;
+  top: 0;
+}
+
 .add-friend-form {
-  margin: 70px auto;
   padding: 20px 25px;
-  width: 560px;
   min-height: 103px;
   font-size: 13px;
   box-shadow: 0 2px 5px 2px #B4B4B4;
@@ -9,9 +14,7 @@
   opacity: 100%;
   border-radius: 5px;
   border: 1px solid #A8A8A8;
-  position: fixed;
-  left: 25%;
-  top: 0;
+  position: relative;
 
   span {
     display: flex;

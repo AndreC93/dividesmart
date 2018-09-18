@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :friends
   has_many :actual_friends, through: :friends, source: :friend
+  has_many :own_bills, foreign_key: :creator_id, class_name: 'Bill'
+  # has_many :bills, through: :payments
 
   def password=(password)
     @password = password

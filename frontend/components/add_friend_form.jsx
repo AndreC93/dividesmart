@@ -75,8 +75,9 @@ class AddFriendForm extends React.Component {
 
   render () {
     const placeholder = this.state.namesAndEmails.length === 0 ? 'Enter names or email addresses' : null;
+
     return (
-      <div>
+      <div className='add-friend-form-container' >
         <div className='modal-backdrop' onClick={ () => this.props.hideAddFriendForm() } />
         <div className='add-friend-form modal'>
           <span>

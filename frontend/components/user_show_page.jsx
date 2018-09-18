@@ -11,7 +11,7 @@ class UserShowPage extends React.Component {
   render () {
     if (!this.props.user) return null;
     return (
-      <div className='center-bar-user-show' >
+      <div>
         <header>
           <main>
             <img src={ window.defaultAvatar } />
@@ -23,8 +23,9 @@ class UserShowPage extends React.Component {
           </div>
         </header>
 
-        <div>Date</div>
-        <div>bills</div>
+        <div className='user-show-transactions' >
+          <div><header>Month/Year</header>Friend's Bills With You</div>
+        </div>
       </div>
     );
   }

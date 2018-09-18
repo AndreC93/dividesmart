@@ -37,20 +37,20 @@
     }
   }
 
-  li {
-    font-size: 14px;
-    box-sizing: content-box;
-    display: block;
-    color: #999;
-    border-left: 6px solid white;
-    padding: 3px 8px 2px;
-    height: 19px;
-    width: 150px;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    &:hover {
-      color: #666;
-    }
-  }
+  // li {
+  //   font-size: 14px;
+  //   box-sizing: content-box;
+  //   display: block;
+  //   color: #999;
+  //   border-left: 6px solid white;
+  //   padding: 3px 8px 2px;
+  //   height: 19px;
+  //   width: 150px;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  //   cursor: pointer;
+  //   &:hover {
+  //     color: #666;
+  //   }
+  // }
 }
