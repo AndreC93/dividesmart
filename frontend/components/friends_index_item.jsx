@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class FriendIndexItem extends React.Component {
+class FriendsIndexItem extends React.Component {
   render () {
     let highlight = {};
     if (parseInt(this.props.match.params.id) === this.props.friend.id) highlight = {
@@ -20,4 +20,4 @@ class FriendIndexItem extends React.Component {
   }
 }
 
-export default withRouter(FriendIndexItem);
+export default withRouter(FriendsIndexItem);

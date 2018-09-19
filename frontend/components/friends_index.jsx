@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchFriends } from '../actions/friend_actions';
 import { grabAllFriends } from '../reducers/selectors';
-import FriendIndexItem from './friend_index_item';
+import FriendsIndexItem from './friends_index_item';
 import { showAddFriendForm } from '../actions/modal_actions';
 import AddFriendForm from './add_friend_form';
 
@@ -22,7 +22,7 @@ class FriendsIndex extends React.Component {
             </div>
           </header>
 
-          {this.props.friends.map( (friend, i) => (<FriendIndexItem friend={friend} key={i} />) )}
+          {this.props.friends.map( (friend, i) => (<FriendsIndexItem friend={friend} key={i} />) )}
         </ul>
         { this.props.addFriendForm ? <AddFriendForm /> : null }
       </div>

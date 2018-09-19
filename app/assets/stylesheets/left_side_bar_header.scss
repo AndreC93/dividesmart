@@ -1,0 +1,14 @@
+.left-side-bar-header {
+  li:first-child {
+    white-space: pre-wrap;
+    display: flex;
+    font-size: 16px;
+    i {
+      background: url('dashboard_icons.png') 0 0;
+      background-size: 32px;
+      background-position-x: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
