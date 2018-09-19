@@ -22,24 +22,9 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   )} />
 );
 
-const LoginErrors = ({component: Component, errors}) => (
-  <Route render={(props) => {
-    if (errors && props.location.pathname != '/login')  {
-      return (<Redirect to='/login' />);
-    } else {
-      return null;
-    }
-  } } />
-);
-
 const mapStateToProps = state => {
   return {loggedIn: Boolean(state.session.currentUserId)};
 };
 
-const mapStateToPropsErrors = state => {
-  return {errors: state.errors.session.includes('Invalid credentials')};
-};
-
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
-export const LoginRoute = withRouter(connect(mapStateToPropsErrors)(LoginErrors));

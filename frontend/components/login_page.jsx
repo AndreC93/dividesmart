@@ -63,6 +63,7 @@ class LoginPage extends React.Component {
             <a onClick={ this.demoLogin } className='demo-button'>Demo Login</a>
           </form>
         </div>
+        <div className='clear-box' >''</div>
         <Footer />
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class LoginFormDropDown extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class LoginFormDropDown extends React.Component {
     e.preventDefault();
     this.props.login(this.state);
     this.props.open();
+    !this.state.email && !this.state.password ? this.props.history.push('/login' ) : null;
   }
 
   show() {
@@ -51,4 +53,4 @@ class LoginFormDropDown extends React.Component {
   }
 }
 
-export default LoginFormDropDown;
+export default withRouter(LoginFormDropDown);
