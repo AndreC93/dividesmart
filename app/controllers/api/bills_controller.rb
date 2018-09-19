@@ -4,7 +4,7 @@ class Api::BillsController < ApplicationController
     full_bill_params[:creator_id] = current_user.id
     @bill = Bill.new(full_bill_params)
     if @bill.save
-      make_payments(params[:bill][:participants])
+      make_payments(@bill.id, params[:bill][:participants])
       render :show
     else
       render json: @bill.errors.full_messages, status: 422
@@ -53,16 +53,17 @@ class Api::BillsController < ApplicationController
     params.require(:bill).permit(:category, :balance_cents, :description)
   end
 
-  def make_payments(participants)
-    @payments = []
-    params[:bill][:participants].each do |participant|
-      type = debt_or_credit(participant[1])
-      payment = Payment.new(user_id: participant[0], amount_cents: participant[1], bill_id: @bill.id, type: type)
+  def make_payments(bill_id, participants)
+    payments = []
+    participants.each do |participant|
+      payment = Payment.new(user_id: participant[1][0], amount_cents: participant[1][1], bill_id: bill_id)
       if (payment.save)
-        @payments << payment
+        payments << payment
       else
-        @payments << payment.errors.messages
+        payments << payment.errors.messages
       end
     end
+
+    return payments
   end
 end

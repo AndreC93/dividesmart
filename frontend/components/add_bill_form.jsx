@@ -18,7 +18,7 @@ class AddBillForm extends React.Component {
       date: `${this.date.toDateString()}`,
     };
     this.update = this.update.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
     this.deleteInput = this.deleteInput.bind(this);
   }
@@ -42,6 +42,11 @@ class AddBillForm extends React.Component {
           />);
       })
     );
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
   }
 
   handleInputSubmit(e) {
@@ -88,13 +93,13 @@ class AddBillForm extends React.Component {
             />
         </div>
 
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <input placeholder='Enter a description' onChange={ this.update('description') } />
 
           <input placeholder='0.00' onChange={ this.update('balance') } />
 
           <div>Paid by <a>you</a> and split <a>equally</a>.</div>
-          <div>(${ perPersonAmount })</div>
+          <div>(${ perPersonAmount }/person)</div>
 
           <div><a>{ this.state.date }</a><a>Add notes</a></div>
 

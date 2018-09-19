@@ -24,7 +24,7 @@ export const receiveBill = bill => ({
 });
 
 export const deleteBill = billId => (
-  dispatch => BillApiUtil.removeBill(billId).then( () => dispatch(removeBill(billId)))
+  dispatch => BillApiUtil.deleteBill(billId).then( () => dispatch(removeBill(billId)))
 );
 
 export const removeBill = billId => ({

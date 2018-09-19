@@ -29,8 +29,4 @@ class ApplicationController < ActionController::Base
     user ? user.id : nil
   end
 
-  def debt_or_credit(amount)
-    amount.to_i > 0 ? 'credit' : 'debt'
-  end
-
 end
