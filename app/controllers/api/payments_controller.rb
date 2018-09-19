@@ -1,26 +1,26 @@
 class Api::PaymentsController < ApplicationController
-  def create
-    full_payment_params = payment_params
-    full_payment_params[:bill_id] = params[:bill_id]
-    full_payment_params[:type] = debt_or_credit(params[:payment][:amount_cents])
-    @payment = Payment.new(full_payment_params)
-    if @payment.save
-      render :show
-
-    else
-      render json: @payment.errors.full_messages, status: 422
-    end
-  end
-
-  def destroy
-    @payment = Payment.find_by(id: params[:id])
-    if @payment
-      @payment.destroy
-      render json: @payment
-    else
-      render json: ['No such payment'], status 404
-    end
-  end
+  # def create
+  #   full_payment_params = payment_params
+  #   full_payment_params[:bill_id] = params[:bill_id]
+  #   full_payment_params[:type] = debt_or_credit(params[:payment][:amount_cents])
+  #   @payment = Payment.new(full_payment_params)
+  #   if @payment.save
+  #     render :show
+  #
+  #   else
+  #     render json: @payment.errors.full_messages, status: 422
+  #   end
+  # end
+  #
+  # def destroy
+  #   @payment = Payment.find_by(id: params[:id])
+  #   if @payment
+  #     @payment.destroy
+  #     render json: @payment
+  #   else
+  #     render json: ['No such payment'], status 404
+  #   end
+  # end
 
   # def show
   #   @payment = Payment.includes(:user, :bill).find_by(id: params[:id])
@@ -46,11 +46,11 @@ class Api::PaymentsController < ApplicationController
     # end
   # end
 
-  private
-
-  def payment_params
-    params.require(:payment).permit(:user_id, :amount_cents)
-  end
+  # private
+  #
+  # def payment_params
+  #   params.require(:payment).permit(:user_id, :amount_cents)
+  # end
 
   # def make_payments(participants)
   #   @payments = []

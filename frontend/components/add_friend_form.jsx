@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AddFriendFormInputItem from './add_friend_form_input_item';
+import FormInputItem from './form_input_item';
 import { Link } from 'react-router-dom';
 import { hideAddFriendForm } from '../actions/modal_actions';
 import { addFriends } from '../actions/friend_actions';
@@ -13,30 +13,18 @@ class AddFriendForm extends React.Component {
       message: '',
       activeInput: '',
     };
-    this.updateNamesAndEmailsInput = this.updateNamesAndEmailsInput.bind(this);
-    this.updateMessage = this.updateMessage.bind(this);
+    this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateActiveInput = this.updateActiveInput.bind(this);
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
     this.deleteInput = this.deleteInput.bind(this);
   }
 
-  updateNamesAndEmailsInput(e) {
-    this.setState({
-      namesAndEmails: e.target.value,
-    });
-  }
-
-  updateActiveInput(e) {
-    this.setState({
-      activeInput: e.target.value,
-    });
-  }
-
-  updateMessage(e) {
-    this.setState({
-      message: e.target.value,
-    });
+  update(field) {
+    return e => {
+      this.setState({
+        [field]: e.target.value,
+      });
+    };
   }
 
   handleSubmit(e) {
@@ -58,7 +46,7 @@ class AddFriendForm extends React.Component {
     return (
       this.state.namesAndEmails.map( (nameOrEmail, i) => {
         return (
-          <AddFriendFormInputItem
+          <FormInputItem
             deleteInput= { () => this.deleteInput(i) }
             input={ nameOrEmail }
             key={ i }
@@ -79,7 +67,7 @@ class AddFriendForm extends React.Component {
     if (this.state.namesAndEmails.length === 0) {
       placeholder = 'Enter names or email addresses';
     } else {
-      inputWidth = { width: 'fit-content' }
+      inputWidth = { width: 'fit-content' };
     }
 
     return (
@@ -101,14 +89,14 @@ class AddFriendForm extends React.Component {
               { this.makePreviousInputBubbles() }
               <input type='text'
                 value={ this.state.activeInput }
-                onChange={ this.updateActiveInput }
+                onChange={ this.update('activeInput') }
                 placeholder={ placeholder }
                 onKeyPress= { this.handleInputSubmit }
                 style={ inputWidth }
                 />
             </div>
 
-            <textarea value={ this.state.message } onChange={ this.updateMessage }
+            <textarea value={ this.state.message } onChange={ this.update('message') }
               placeholder='Include an optional message'
               />
 
@@ -124,13 +112,9 @@ class AddFriendForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  modal: state.modal.addFriendForm,
-});
-
 const mapDispatchToProps = dispatch => ({
   hideAddFriendForm: () => dispatch(hideAddFriendForm()),
   addFriends: usernamesAndEmails => dispatch(addFriends(usernamesAndEmails)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddFriendForm);
+export default connect(null, mapDispatchToProps)(AddFriendForm);

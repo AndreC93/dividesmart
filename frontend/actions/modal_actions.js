@@ -4,6 +4,8 @@ export const SHOW_DROP_DOWN_MENU = 'SHOW_DROP_DOWN_MENU';
 export const HIDE_DROP_DOWN_MENU = 'HIDE_DROP_DOWN_MENU';
 export const SHOW_ADD_FRIEND_FORM = 'SHOW_ADD_FRIEND_FORM';
 export const HIDE_ADD_FRIEND_FORM = 'HIDE_ADD_FRIEND_FORM';
+export const SHOW_ADD_BILL_FORM = 'SHOW_ADD_BILL_FORM';
+export const HIDE_ADD_BILL_FORM = 'HIDE_ADD_BILL_FORM';
 export const CLEAR_ALL_MODALS = 'CLEAR_ALL_MODALS';
 
 export const showLoginForm = () => ({
@@ -28,6 +30,14 @@ export const showAddFriendForm = () => ({
 
 export const hideAddFriendForm = () => ({
   type: HIDE_ADD_FRIEND_FORM,
+});
+
+export const showAddBillForm = () => ({
+  type: SHOW_ADD_BILL_FORM,
+});
+
+export const hideAddBillForm = () => ({
+  type: HIDE_ADD_BILL_FORM,
 });
 
 export const clearAllModals = () => ({

@@ -13,14 +13,14 @@ export const deleteBill = billId => (
   })
 );
 
-export const fetchBills = () => (
+export const requestBills = () => (
   $.ajax({
     method: 'GET',
     url: '/api/bills',
   })
 );
 
-export const fetchBill = billId => (
+export const requestBill = billId => (
   $.ajax({
     method: 'GET',
     url: `/api/bills/${billId}`,
