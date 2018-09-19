@@ -20,9 +20,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :friends, foreign_key: :user_id, class_name: 'Friend'
+  has_many :friends, foreign_key: :user_id, class_name: 'Friend', dependent: :destroy
   has_many :actual_friends, through: :friends, source: :friend
-  has_many :created_bills, foreign_key: :creator_id, class_name: 'Bill'
+  has_many :created_bills, foreign_key: :creator_id, class_name: 'Bill', dependent: :destroy
   has_many :payments
   has_many :bills, through: :payments
 

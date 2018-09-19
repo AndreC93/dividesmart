@@ -23,7 +23,7 @@ export const requestFriends = () => (
 export const requestFriend = friendId => (
   $.ajax({
     method: 'GET',
-    url: '/api/users/${friendId}',
+    url: `/api/users/${friendId}`,
     data: { friendId },
   })
 );

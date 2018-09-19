@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_171901) do
+ActiveRecord::Schema.define(version: 2018_09_18_203023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 2018_09_18_171901) do
   create_table "bills", force: :cascade do |t|
     t.integer "creator_id", null: false
     t.string "category", default: "General", null: false
-    t.decimal "amount", precision: 13, scale: 2, null: false
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "balance_cents", default: 0, null: false
+    t.string "balance_currency", default: "USD", null: false
     t.index ["category"], name: "index_bills_on_category"
     t.index ["creator_id"], name: "index_bills_on_creator_id"
   end
@@ -39,10 +40,11 @@ ActiveRecord::Schema.define(version: 2018_09_18_171901) do
   create_table "payments", force: :cascade do |t|
     t.integer "bill_id", null: false
     t.integer "user_id", null: false
-    t.decimal "amount", precision: 13, scale: 2, null: false
     t.string "type", default: "debt", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
     t.index ["bill_id"], name: "index_payments_on_bill_id"
     t.index ["type"], name: "index_payments_on_type"
     t.index ["user_id"], name: "index_payments_on_user_id"
