@@ -4,6 +4,7 @@ import * as Calculators from '../util/calculators';
 import { connect } from 'react-redux';
 import { hideAddBillForm } from '../actions/modal_actions';
 import { addBill } from '../actions/bill_actions';
+import { grabAllFriends } from '../reducers/selectors';
 
 class AddBillForm extends React.Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class AddBillForm extends React.Component {
   }
 
   render () {
+    if (!this.props.modal) return null;
     let placeholder;
     let perPersonAmount;
     let inputWidth = {};
@@ -77,8 +79,10 @@ class AddBillForm extends React.Component {
     }
     return (
       <div>
-        <header>
-          Add a bill<button>x</button>
+        <div className='modal-backdrop' onClick={ this.props.hideAddBillForm } />
+        <div className='modal add-friend-form' >
+          <header>
+            Add a bill<button onClick={ this.props.hideAddBillForm } >x</button>
         </header>
 
         <div className='invite-input-container' >
@@ -103,17 +107,23 @@ class AddBillForm extends React.Component {
 
           <div><a>{ this.state.date }</a><a>Add notes</a></div>
 
-          <div><a>Cancel</a><button>Save</button></div>
+          <div><a onClick={ this.props.hideAddBillForm } >Cancel</a><button>Save</button></div>
         </form>
 
+      </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  friends: grabAllFriends(state),
+  modal: state.modal.addBillForm,
+});
 
 const mapDispatchToProps = dispatch => ({
   hideAddBillForm: () => dispatch(hideAddBillForm()),
   addBill: bill => dispatch(addBill(bill)),
 });
 
-export default connect(null, mapDispatchToProps)(AddBillForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddBillForm);

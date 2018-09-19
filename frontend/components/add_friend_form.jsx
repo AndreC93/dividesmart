@@ -72,7 +72,7 @@ class AddFriendForm extends React.Component {
 
     return (
       <div className='add-friend-form-container' >
-        <div className='modal-backdrop' onClick={ () => this.props.hideAddFriendForm() } />
+        <div className='modal-backdrop' onClick={ this.props.hideAddFriendForm } />
         <div className='add-friend-form modal'>
           <span>
             <h1>

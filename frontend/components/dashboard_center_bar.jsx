@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchFriend } from '../actions/friend_actions';
+import { showAddBillForm, hideAddBillForm } from '../actions/modal_actions';
+import AddBillForm from './add_bill_form';
 
 class DashboardCenterBar extends React.Component {
   componentDidMount() {
@@ -17,7 +19,9 @@ class DashboardCenterBar extends React.Component {
             <h1>Dashboard</h1>
           </main>
           <div>
-            <button>Add a bill</button>
+            <button onClick={ this.props.modal ? this.props.hideAddBillForm : this.props.showAddBillForm } >
+              Add a bill
+            </button>
             <button>Settle up</button>
           </div>
         </header>
@@ -29,6 +33,8 @@ class DashboardCenterBar extends React.Component {
             <div>you are owed</div>
           </header>
         </div>
+
+        <AddBillForm />
       </div>
     );
   }
@@ -36,10 +42,13 @@ class DashboardCenterBar extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   user: state.entities.users[state.session.currentUserId],
+  modal: state.modal.addBillForm,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchFriend: (id) => dispatch(fetchFriend(id)),
+  showAddBillForm: () => dispatch(showAddBillForm()),
+  hideAddBillForm: () => dispatch(hideAddBillForm()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DashboardCenterBar));

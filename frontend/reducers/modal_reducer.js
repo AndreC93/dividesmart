@@ -20,7 +20,6 @@ export default function (state = defaultState, action) {
       return merge({}, defaultState, { addFriendForm: true });
     case HIDE_ADD_FRIEND_FORM:
       return merge({}, defaultState, { addFriendForm: false });
-
     case SHOW_ADD_BILL_FORM:
       return merge({}, defaultState, { addBillForm: true });
     case HIDE_ADD_BILL_FORM:

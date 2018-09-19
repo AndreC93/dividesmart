@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchFriend } from '../actions/friend_actions';
 import { withRouter } from 'react-router-dom';
+import { showAddBillForm, hideAddBillForm } from '../actions/modal_actions';
+import AddBillForm from './add_bill_form';
 
 class UserShowPage extends React.Component {
   componentDidMount() {
@@ -18,7 +20,10 @@ class UserShowPage extends React.Component {
             <h1>{ this.props.user.username }</h1>
           </main>
           <div>
-            <button>Add a bill  <i className="fas fa-caret-down"></i> </button>
+            <button onClick={ this.props.modal ? this.props.hideAddBillForm : this.props.showAddBillForm } >
+              Add a bill
+              <i className="fas fa-caret-down"></i>
+            </button>
             <button>Settle up</button>
           </div>
         </header>
@@ -26,6 +31,8 @@ class UserShowPage extends React.Component {
         <div className='user-show-transactions' >
           <div><header>Month/Year</header>Friend's Bills With You</div>
         </div>
+
+        <AddBillForm />
       </div>
     );
   }
@@ -33,10 +40,13 @@ class UserShowPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   user: state.entities.users[ownProps.match.params.id],
+  modal: state.modal.addBillForm,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchFriend: (id) => dispatch(fetchFriend(id)),
+  showAddBillForm: () => dispatch(showAddBillForm()),
+  hideAddBillForm: () => dispatch(hideAddBillForm()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserShowPage));
