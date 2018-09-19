@@ -1,14 +1,25 @@
 .left-side-bar-header {
-  li:first-child {
-    white-space: pre-wrap;
-    display: flex;
-    font-size: 16px;
-    i {
-      background: url('dashboard_icons.png') 0 0;
-      background-size: 32px;
-      background-position-x: 16px;
-      width: 16px;
-      height: 16px;
+  li {
+    box-sizing: content-box;
+    padding: 3px 8px 5px 5px;
+    &:first-child {
+      white-space: pre-wrap;
+      display: flex;
+      font-size: 16px;
+      i {
+        background: url('dashboard_icons.png') 0 0;
+        background-size: 32px;
+        background-position-x: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    &:nth-child(2) {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    &:nth-child(3) {
+      font-size: 16px;
     }
   }
 }

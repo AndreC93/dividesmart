@@ -29,7 +29,7 @@ class LeftSideBarHeader extends React.Component {
         <li style={ highlight2 } onClick={ () => (
             this.props.history.push('/activity')) } >
           <i className="fas fa-flag" />
-          <a> Recent Activity</a>
+          <a> Recent activity</a>
         </li>
         <li style={ highlight3 } onClick={ () => (
             this.props.history.push('/all')) } >
