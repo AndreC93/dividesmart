@@ -1,3 +1,3 @@
-json.bills @bills do |bill|
+json.array! @bills.each do |bill|
   json.partial! 'api/bills/bill', bill: bill
 end

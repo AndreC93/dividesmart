@@ -16,6 +16,7 @@ class AddFriendForm extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
+    this.handleBackspace = this.handleBackspace.bind(this);
     this.deleteInput = this.deleteInput.bind(this);
   }
 
@@ -34,10 +35,21 @@ class AddFriendForm extends React.Component {
   }
 
   handleInputSubmit(e) {
+
     if (e.key === 'Enter' && e.target.value.length > 0) {
       this.setState({
         namesAndEmails: this.state.namesAndEmails.concat(e.target.value),
         activeInput: '',
+      });
+    }
+  }
+
+  handleBackspace(e) {
+    const names = this.state.namesAndEmails;
+    if (e.key === 'Backspace' && e.target.value.length === 0) {
+      names.pop();
+      this.setState({
+        namesAndEmails: names,
       });
     }
   }
@@ -92,6 +104,7 @@ class AddFriendForm extends React.Component {
                 onChange={ this.update('activeInput') }
                 placeholder={ placeholder }
                 onKeyPress= { this.handleInputSubmit }
+                onKeyDown= { this.handleBackspace }
                 style={ inputWidth }
                 />
             </div>

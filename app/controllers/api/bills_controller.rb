@@ -26,7 +26,7 @@ class Api::BillsController < ApplicationController
   end
 
   def index
-    @bills = Bill.includes(:creator, :payments, :participants).find_by(creator_id: current_user.id)
+    @bills = Bill.includes(:creator, :payments, :participants).where(creator_id: current_user.id).find_all()
     render :index
   end
 

@@ -4,10 +4,14 @@ import { withRouter } from 'react-router-dom';
 import { fetchFriend } from '../actions/friend_actions';
 import { showAddBillForm, hideAddBillForm } from '../actions/modal_actions';
 import AddBillForm from './add_bill_form';
+import { fetchBills } from '../actions/bill_actions';
+import { grabAllBills } from '../reducers/selectors';
+import BillShow from './bill_show';
 
 class DashboardCenterBar extends React.Component {
   componentDidMount() {
     this.props.fetchFriend(this.props.user.id);
+    // this.props.fetchBills();
   }
 
   render () {
@@ -40,13 +44,18 @@ class DashboardCenterBar extends React.Component {
   }
 }
 
+// { this.props.bills.map( (bill, i) => (
+//   <BillShow bill={bill} key={i} />
+// ))}
 const mapStateToProps = (state, ownProps) => ({
   user: state.entities.users[state.session.currentUserId],
   modal: state.modal.addBillForm,
+  // bills: grabAllBills(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchFriend: (id) => dispatch(fetchFriend(id)),
+  fetchBills: () => dispatch(fetchBills()),
   showAddBillForm: () => dispatch(showAddBillForm()),
   hideAddBillForm: () => dispatch(hideAddBillForm()),
 });

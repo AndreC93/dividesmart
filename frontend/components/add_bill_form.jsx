@@ -119,9 +119,7 @@ class AddBillForm extends React.Component {
     let leftover = (this.state.balanceCents - sum);
     const perPerson = this.state.friends.map( x => this.state.perPerson ).concat(this.state.perPerson);
     if (leftover !== 0) {
-      debugger;
       for (let i = 0; leftover !== 0; i++) {
-        debugger;
         if (leftover > 0) {
           leftover -= 1;
           perPerson[i] += 1;
@@ -133,7 +131,6 @@ class AddBillForm extends React.Component {
     }
     let participants = this.state.friends.map( friend => [friend[1], perPerson.pop()] );
     participants = participants.concat([[this.props.currentUserId, perPerson.pop()]]);
-    debugger;
     this.setState(
       { participants: participants },
       () => this.props.addBill(this.state)
@@ -208,7 +205,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   hideAddBillForm: () => dispatch(hideAddBillForm()),
-  addBill: bill => {debugger; return dispatch(addBill(bill));},
+  addBill: bill => dispatch(addBill(bill)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBillForm);

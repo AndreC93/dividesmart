@@ -9,10 +9,12 @@ export const fetchFriends = () => (
   dispatch => FriendApiUtil.requestFriends().then( friends => dispatch(receiveFriends(friends)))
 );
 
-export const receiveFriends = friends => ({
+export const receiveFriends = friends => {
+  debugger
+  return ({
   type: RECEIVE_FRIENDS,
   friends,
-});
+})};
 
 export const fetchFriend = (friendId) => (
   dispatch => FriendApiUtil.requestFriend(friendId).then( friend => dispatch(receiveFriend(friend)))

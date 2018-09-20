@@ -20,8 +20,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:actual_friends).find_by(id: params[:friendId])
-    render :show
+    @user = User.includes(:actual_friends, :payments, :bills, :created_bills).find_by(id: params[:friendId])
+    if @user
+      @bills = @user.bills
+      render :show
+    else
+      render json: 'No User Found', status: 404
+    end
   end
 
   def index

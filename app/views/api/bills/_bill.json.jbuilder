@@ -1,10 +1,13 @@
-json.extract! bill, :id, :creator_id, :category, :description  do
-  json.balance (humanized_money_with_symbol :balance_cents)
-  json.createdAt :created_at
-  json.payments(:payments) do |payment|
-    json.extract! payment, :id, :user_id, :type do
-      json.createdAt :created_at
-      json.amount (humanized_money_with_symbol :amount_cents)
-    end
+json.set! bill.id do
+  json.extract! bill, :id, :category, :description
+  json.creatorId bill.creator_id
+  json.balance bill.balance_cents
+  json.createdAt bill.created_at
+
+  json.payments(bill.payments) do |payment|
+    json.id payment.id
+    json.userId payment.user_id
+    json.createdAt payment.created_at
+    json.amount payment.amount_cents
   end
 end
