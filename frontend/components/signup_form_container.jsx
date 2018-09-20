@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
       email: '',
       password: '',
       maxHeight: maxHeight,
+      errorMessageBanner: '',
     },
     errors: state.errors.session,
   };

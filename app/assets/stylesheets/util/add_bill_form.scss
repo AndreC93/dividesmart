@@ -1,0 +1,18 @@
+.add-bill-form {
+  img {
+    width: 50px;
+    height: 84px;
+  }
+  div:first-of-type {
+    display: flex;
+  }
+  h4 {
+    font-size: 36px;
+  }
+
+  form {
+    input:first-of-type {
+      font-size: 20px;
+    }
+  }
+}

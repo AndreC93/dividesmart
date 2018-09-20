@@ -1,6 +1,7 @@
 import React from 'react';
 import SessionErrors from './session_errors';
 import { Link } from 'react-router-dom';
+import ErrorMessageBanner from './error_message_banner';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showOtherInputs = this.showOtherInputs.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.checkEmail = this.checkEmail.bind(this);
   }
 
   update(field) {
@@ -19,10 +21,26 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state);
+    this.checkEmail(this.state.email);
   }
 
   showOtherInputs() {
     this.setState({ maxHeight: 600 });
+  }
+
+  checkEmail(email) {
+    if (email.length === 0) return null;
+    if (/[@]/.test(this.state.email)) {
+      if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email)) {
+        this.setState({
+          errorMessageBanner: "Email must end with a domain name",
+        });
+      }
+    } else {
+      this.setState({
+        errorMessageBanner: "Email must contain a '@'",
+      });
+    }
   }
 
   demoLogin() {
@@ -55,10 +73,16 @@ class SignupForm extends React.Component {
               } } value={ this.state.username }/>
           </label>
           <br/>
+
+
           <div className='slideout' style={ maxHeight } >
             <label>Here's my <strong>email address</strong>:
               <br/>
-              <input type='text' onChange={ this.update('email') } value={ this.state.email } />
+
+              <ErrorMessageBanner extraClass={'signup-error-banner'} message={ this.state.errorMessageBanner } close={ () => this.setState({ errorMessageBanner: '' }) } />
+
+              <input type='text' onChange={ this.update('email') } value={ this.state.email } onBlur={ this.checkUsername } />
+
             </label>
             <br/>
 

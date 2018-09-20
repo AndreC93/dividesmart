@@ -1,0 +1,19 @@
+.error-message-banner {
+  position: absolute;
+  background: #FEFFC6;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  padding: 5px 10px;
+  border-radius: 5px;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.signup-error-banner {
+  margin-left: -10px;
+}
+
+.add-bill-error-banner {
+  margin-left: 8vw;
+}

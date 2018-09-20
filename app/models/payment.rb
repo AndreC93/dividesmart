@@ -16,6 +16,6 @@ class Payment < ApplicationRecord
   validates :bill_id, :user_id, :amount_cents, :amount_currency, presence: true
 
   belongs_to :user, foreign_key: :user_id, class_name: 'User'
-  belongs_to :bill, foreign_key: :bill_id, class_name: 'Bill'
+  belongs_to :bill, inverse_of: :payments
 
 end
