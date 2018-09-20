@@ -3,23 +3,31 @@ export const grabAllFriends = state => {
   return friends.filter( friend => friend.id != state.session.currentUserId );
 };
 
-export const grabAllBills = state => {
+export const grabAllBills = (state, userId = state.session.currentUserId) => {
   const bills = Object.values(state.entities.bills);
-  const currUserId = state.session.currentUserId;
-  return bills.filter( bill => {
+  if (bills.length === 0) return false;
+  const relatedBills = bills.filter( bill => {
+    if (!bill) return false;
+    if (!bill.payments) return false;
+
     const payments = bill.payments.map( payment => payment.userId );
-    if (bill.creatorId === currUserId || payments.includes(currUserId)) {
+    if (bill.creatorId === userId || payments.includes(userId)) {
       return true;
     } else {
       false;
     }
   });
+  return relatedBills;
 };
 
 export const grabAllUsernames = state => {
   const users = Object.values(state.entities.users);
-  return users.map( user => ({
+  const usernames = {};
+  users.forEach( user => (
+    usernames[user.id] = {
     username: user.username,
     userId: user.id,
-  }) );
+    }
+  ) );
+  return usernames;
 };

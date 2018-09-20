@@ -9,12 +9,10 @@ export const fetchBills = () => (
   dispatch => BillApiUtil.requestBills().then( bills => dispatch(receiveBills(bills)))
 );
 
-export const receiveBills = bills => {
-  debugger
-  return ({
+export const receiveBills = bills => ({
   type: RECEIVE_BILLS,
   bills,
-})};
+});
 
 export const fetchBill = (billId) => (
   dispatch => BillApiUtil.requestBill(billId).then( bill => dispatch(receiveBill(bill)))

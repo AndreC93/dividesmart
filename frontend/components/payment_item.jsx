@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 import { grabAllUsernames } from '../reducers/selectors';
 
 class PaymentItem extends React.Component {
-  checkIfDebt(str) {
-    return str[0] === '-' ? 'owes' : 'paid';
+  checkIfDebt(num) {
+    return num < 0 ? 'owes' : 'paid';
   }
 
   render () {
+    if (!this.props.usernames[this.props.payment.userId] || isNaN(this.props.amount)) return null;
     return (
-      <div>
+      <div className='payment-item' >
         <img src={ window.default_avatar } />
         <div>
-          <strong>{this.props.userNames[this.props.userId].username}</strong> { this.checkIfDebt(this.props.amount) } $
-            { this.props.amount.split('$')[1] }
+          <strong>{this.props.usernames[this.props.payment.userId].username}</strong> { this.checkIfDebt(this.props.amount) } $
+            { (this.props.amount)/100 }
         </div>
       </div>
     );
@@ -21,7 +22,7 @@ class PaymentItem extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userNames: grabAllUsernames(state),
+  usernames: grabAllUsernames(state),
 });
 
 export default connect(mapStateToProps)(PaymentItem);

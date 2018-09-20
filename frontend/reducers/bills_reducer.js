@@ -10,16 +10,15 @@ export default function (state = {}, action) {
     case RECEIVE_FRIENDS:
     case RECEIVE_FRIEND:
     case RECEIVE_BILLS:
-      if (action.bills)
-      action.bills.forEach( bill => newState[bill.id] = bill);
+      if (!action.bills) return state;
+      action.bills.forEach( bill => merge(newState, bill));
       return merge({}, state, newState);
     case RECEIVE_BILL:
-      return merge({}, state, { [action.bill.id]: action.user });
+      return merge({}, state, action.bill);
     case REMOVE_FRIEND:
       newState = merge({}, state);
       for (let key in newState) {
         if (newState[key]['creatorId'] === action.friendId) {
-        //|| newState[key][payments]) {
           delete newState[key];
         }
       }

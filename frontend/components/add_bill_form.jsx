@@ -20,6 +20,7 @@ class AddBillForm extends React.Component {
       date: `${this.date.toDateString()}`,
       errorMessageBanner: '',
       participants: [],
+      creditor: props.currentUserId,
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -129,8 +130,8 @@ class AddBillForm extends React.Component {
         }
       }
     }
-    let participants = this.state.friends.map( friend => [friend[1], perPerson.pop()] );
-    participants = participants.concat([[this.props.currentUserId, perPerson.pop()]]);
+    let participants = this.state.friends.map( friend => [friend[1], (perPerson.pop() * -1)] );
+    participants = participants.concat([[this.props.currentUserId, (perPerson.pop() * -1)]]).concat([[this.state.creditor, this.state.balanceCents]]);
     this.setState(
       { participants: participants },
       () => this.props.addBill(this.state)
@@ -150,7 +151,7 @@ class AddBillForm extends React.Component {
       perPersonAmount = this.state.balance === '' ? '0.00' : Calculators.splitEqually(this.state.balance, this.state.friends.length + 1);
     }
     return (
-      <div>
+      <div className='add-bill-form-container' >
         <div className='modal-backdrop' onClick={ this.props.hideAddBillForm } />
 
         <div className='modal add-friend-form add-bill-form' >

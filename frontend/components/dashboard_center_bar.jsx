@@ -11,7 +11,7 @@ import BillShow from './bill_show';
 class DashboardCenterBar extends React.Component {
   componentDidMount() {
     this.props.fetchFriend(this.props.user.id);
-    // this.props.fetchBills();
+    this.props.fetchBills();
   }
 
   render () {
@@ -39,18 +39,18 @@ class DashboardCenterBar extends React.Component {
         </div>
 
         <AddBillForm />
+        { this.props.bills ? this.props.bills.map( (bill, i) => (
+          <BillShow bill={bill} key={i} />
+        )) : null }
       </div>
     );
   }
 }
 
-// { this.props.bills.map( (bill, i) => (
-//   <BillShow bill={bill} key={i} />
-// ))}
 const mapStateToProps = (state, ownProps) => ({
   user: state.entities.users[state.session.currentUserId],
   modal: state.modal.addBillForm,
-  // bills: grabAllBills(state),
+  bills: grabAllBills(state),
 });
 
 const mapDispatchToProps = dispatch => ({

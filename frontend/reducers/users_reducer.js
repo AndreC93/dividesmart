@@ -3,11 +3,9 @@ import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../actions/frien
 import merge from 'lodash/merge';
 
 export default function (state = {}, action) {
-  debugger
   let newState = {};
   switch (action.type) {
     case RECEIVE_FRIENDS:
-    debugger;
       action.friends.forEach( friend => newState[friend.id] = friend);
       return merge({}, state, newState);
     case RECEIVE_CURRENT_USER:
@@ -16,7 +14,6 @@ export default function (state = {}, action) {
     case REMOVE_FRIEND:
       newState = merge({}, state);
       delete newState[action.friendId];
-      debugger;
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};
