@@ -2,7 +2,7 @@ import React from 'react';
 import FormInputItem from './form_input_item';
 import * as Calculators from '../util/calculators';
 import { connect } from 'react-redux';
-import { hideAddBillForm } from '../actions/modal_actions';
+import { hideAddBillForm, showCreditor, hideCreditor, showCategories, hideCategories } from '../actions/modal_actions';
 import { addBill } from '../actions/bill_actions';
 import { grabAllFriends } from '../reducers/selectors';
 import ErrorMessageBanner from './error_message_banner';
@@ -12,6 +12,7 @@ class AddBillForm extends React.Component {
     super(props);
     this.date = new Date();
     this.state = {
+      category: 'General',
       friends: [],
       activeInput: '',
       description: '',
@@ -20,10 +21,11 @@ class AddBillForm extends React.Component {
       date: `${this.date.toDateString()}`,
       errorMessageBanner: '',
       participants: [],
-      creditor: props.currentUserId,
+      creditor: props.currentUser.id,
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBackspace = this.handleBackspace.bind(this);
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
     this.deleteInput = this.deleteInput.bind(this);
     this.makeParticipants = this.makeParticipants.bind(this);
@@ -131,11 +133,55 @@ class AddBillForm extends React.Component {
       }
     }
     let participants = this.state.friends.map( friend => [friend[1], (perPerson.pop() * -1)] );
-    participants = participants.concat([[this.props.currentUserId, (perPerson.pop() * -1)]]).concat([[this.state.creditor, this.state.balanceCents]]);
+    participants = participants.concat([[this.props.currentUser.id, (perPerson.pop() * -1)]]).concat([[this.state.creditor, this.state.balanceCents]]);
     this.setState(
       { participants: participants },
       () => this.props.addBill(this.state)
     );
+  }
+
+  generateCreditorModal() {
+    const friendsPlusUser = this.state.friends.concat([[this.props.currentUser.username, this.props.currentUser.id]]);
+    return friendsPlusUser.map( (user, i) => (
+      <li
+        style={ user[1] === this.state.creditor ? {background: '#EEEEEE'} : {} }
+        onClick={ () => {
+          this.setState(
+            { creditor: user[1] },
+            () => this.props.hideCreditor()
+          );
+        }
+       }
+        key={i} >{user[0]}
+      </li>
+    ));
+  }
+
+  generateCategories() {
+    const cats = ['General', 'Food and drink'];
+    return cats.map( (cat, i) => (
+      <li
+        style={ cat === this.state.category ? {background: '#EEEEEE'} : {} }
+        onClick={ () => {
+          this.setState(
+            { category: cat },
+            () => this.props.hideCategories()
+          );
+        }
+       }
+        key={i} >{cat}
+      </li>
+    ));
+  }
+
+  handleBackspace(e) {
+    const names = this.state.friends;
+    if (e.key === 'Backspace' && e.target.value.length === 0) {
+      names.pop();
+      this.setState({
+        friends: names,
+      });
+    }
   }
 
   render () {
@@ -150,9 +196,10 @@ class AddBillForm extends React.Component {
       inputWidth = { minWidth: '30px' };
       perPersonAmount = this.state.balance === '' ? '0.00' : Calculators.splitEqually(this.state.balance, this.state.friends.length + 1);
     }
+
     return (
       <div className='add-bill-form-container' >
-        <div className='modal-backdrop' onClick={ this.props.hideAddBillForm } />
+        <div className='modal-backdrop' onClick={  this.props.hideAddBillForm } />
 
         <div className='modal add-friend-form add-bill-form' >
           <header>
@@ -160,7 +207,7 @@ class AddBillForm extends React.Component {
           </header>
 
 
-          <div className='invite-input-container add-bill-input-container' >
+          <div className='invite-input-container add-bill-input-container'  onClick={ () => setTimeout(this.props.hideCreditor, 500) } >
             <h5>With <strong>you</strong> and:</h5>
             { this.makePreviousInputBubbles() }
             <input type='text'
@@ -168,17 +215,21 @@ class AddBillForm extends React.Component {
               onChange={ this.update('activeInput') }
               placeholder={ placeholder }
               onKeyPress= { this.handleInputSubmit }
+              onKeyDown= { this.handleBackspace }
               style={ inputWidth }
               />
           </div>
           <div className='clear-fix'></div>
-          
+
           <ErrorMessageBanner extraClass='add-bill-error-banner' message={ this.state.errorMessageBanner } close={ () => this.setState({ errorMessageBanner: '' }) } />
 
-          <form onSubmit={ this.handleSubmit }>
+          <form onSubmit={ this.handleSubmit } >
             <div>
-              <img src={ window.general } />
-              <h4>
+              <img src={ this.state.category === 'General' ? window.general : window.food }  onClick={ () => {
+                  this.props.categoriesMenu ? this.props.hideCategories() : this.props.showCategories();
+                } }/>
+              {this.props.categoriesMenu ? <ul className='categories-menu' >{this.generateCategories()}</ul> : null}
+              <h4 onClick={ () => setTimeout(this.props.hideCreditor, 500) } >
                 <input id='bill-form-description' placeholder='Enter a description' onChange={ this.update('description') } />
                 <div className='money-input'>
                   <i className="fas fa-dollar-sign" /><input placeholder='0.00' onChange={ this.update('balance') }  />
@@ -188,10 +239,22 @@ class AddBillForm extends React.Component {
 
             <div id='line-break' />
 
-            <stuff>
-              <aside>Paid by <a>you</a> and split <a>equally</a>.</aside>
+            <section>
+              <aside>Paid by <a
+                onClick={ this.props.creditorMenu ? this.props.hideCreditor : this.props.showCreditor }
+                >{ this.state.creditor === this.props.currentUser.id ? 'you' : this.props.friends.filter( friend => friend.id === this.state.creditor)[0].username }</a> and split <a>equally</a>.</aside>
               <aside>(${ perPersonAmount }/person)</aside>
-            </stuff>
+            </section>
+
+              { this.props.creditorMenu ?
+                <ul className='creditor-menu' >
+                  <i className="fas fa-caret-up"></i>
+                  <i className="fas fa-caret-up"></i>
+                  <i className="fas fa-caret-up"></i>
+                 {this.generateCreditorModal()}
+                </ul>
+                : null
+               }
 
             <div id='line-break' />
 
@@ -211,12 +274,25 @@ class AddBillForm extends React.Component {
 const mapStateToProps = state => ({
   friends: grabAllFriends(state),
   modal: state.modal.addBillForm,
-  currentUserId: state.session.currentUserId,
+  currentUser: state.entities.users[state.session.currentUserId],
+  creditorMenu: state.modal.creditorMenu,
+  categoriesMenu: state.modal.categoriesMenu,
 });
 
 const mapDispatchToProps = dispatch => ({
-  hideAddBillForm: () => dispatch(hideAddBillForm()),
+  hideAddBillForm: () => {
+    dispatch(hideAddBillForm());
+    dispatch(hideCreditor());
+    dispatch(hideCategories());
+  },
   addBill: bill => dispatch(addBill(bill)),
+  showCreditor: () => dispatch(showCreditor()),
+  hideCreditor: () => {
+    dispatch(hideCreditor());
+    dispatch(hideCategories());
+  },
+  showCategories: () => dispatch(showCategories()),
+  hideCategories: () => dispatch(hideCategories()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBillForm);

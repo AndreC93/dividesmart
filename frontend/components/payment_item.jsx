@@ -8,10 +8,10 @@ class PaymentItem extends React.Component {
   }
 
   render () {
-    if (!this.props.usernames[this.props.payment.userId] || isNaN(this.props.amount)) return null;
+    if (!this.props.usernames[this.props.payment.userId] || isNaN(this.props.amount) || !this.props.show) return null;
     return (
       <div className='payment-item' >
-        <img src={ window.default_avatar } />
+        <img src={ window.defaultAvatar } />
         <div>
           <strong>{this.props.usernames[this.props.payment.userId].username}</strong> { this.checkIfDebt(this.props.amount) } $
             { (this.props.amount)/100 }

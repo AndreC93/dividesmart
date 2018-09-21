@@ -1,0 +1,27 @@
+.categories-menu {
+  position: absolute;
+  left: 99px;
+  top: 146px;
+
+  li {
+    cursor: pointer;
+    z-index: 5000;
+    background: white;
+    padding: 6px;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    &:first-of-type {
+      border-top: 1px solid #999;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    &:last-of-type {
+      border-bottom: 1px solid #999;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &:hover {
+      background-color: #DDDDDD;
+    }
+  }
+}

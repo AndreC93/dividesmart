@@ -9,13 +9,47 @@ import { grabAllBills } from '../reducers/selectors';
 import BillShow from './bill_show';
 
 class DashboardCenterBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      total: 0,
+      owe: 0,
+      owed: 0,
+    };
+    this.calculateDebts = this.calculateDebts.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchFriend(this.props.user.id);
     this.props.fetchBills();
+    setTimeout(() => {
+      if (this.props.bills) this.calculateDebts();
+    }, 350);
+  }
+
+  calculateDebts() {
+    let owe = 0;
+    let owed = 0;
+    this.props.bills.forEach( bill => {
+      bill.payments.forEach( payment => {
+        if (this.props.user.id === payment.userId) {
+          if (payment.amount < 0) {
+            owe += payment.amount;
+          } else {
+            owed += payment.amount;
+          }
+        }
+      });
+    });
+    this.setState({
+      owe: owe/100,
+      owed: owed/100,
+    });
   }
 
   render () {
     if (!this.props.user) return null;
+    const balance = this.state.owe + this.state.owed;
     return (
       <div>
         <header>
@@ -32,9 +66,9 @@ class DashboardCenterBar extends React.Component {
 
         <div className='balance-bar' >
           <header>
-            <div>total balance</div>
-            <div>you owe</div>
-            <div>you are owed</div>
+            <div>total balance: {balance < 0 ? '-' : null}${Math.abs(balance)}</div>
+            <div>you owe ${Math.abs(this.state.owe)}</div>
+            <div>you are owed ${this.state.owed}</div>
           </header>
         </div>
 
