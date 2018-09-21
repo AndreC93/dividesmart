@@ -35,7 +35,6 @@ class AddFriendForm extends React.Component {
   }
 
   handleInputSubmit(e) {
-
     if (e.key === 'Enter' && e.target.value.length > 0) {
       this.setState({
         namesAndEmails: this.state.namesAndEmails.concat(e.target.value),

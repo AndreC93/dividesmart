@@ -1,18 +1,198 @@
+.add-bill-form-container {
+  z-index: 100;
+  position: relative;
+  top: -90px;
+  left: 80px;
+  max-width: 350px;
+  width: 350px;
+  height: 352px;
+  max-height: 352px;
+  display: block;
+  background: white;
+  .add-bill-input-container {
+    max-width: 242px;
+    box-sizing: border-box;
+    font-size: 14px;
+    max-height: 41px;
+    border: none;
+    margin-bottom: 0;
+
+    input {
+      min-width: 248px;
+    }
+
+    h5 {
+      margin-top: 0;
+      font-weight: normal;
+      font-size: 14px;
+      min-width: 86px;
+      strong {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 .add-bill-form {
+  padding: 0;
+  position: relative;
+  align-items: center;
+
+  a {
+    cursor: pointer;
+  }
+
+  header {
+    background: #5cc5a7;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid #36977b;
+    text-shadow: 0 -1px 0 #318a71;
+    font-weight: bold;
+    max-height: 39px;
+    button:first-child {
+      padding: 0 5px;
+      background-color: #5cc5a7;
+      border: none;
+      font-size: 28px;
+      text-decoration: none;
+      text-shadow: none;
+      position: absolute;
+      left: 312px;
+      top: 0px;
+      &:hover {
+        opacity: 0.3;
+        background: #5cc5a7;
+      }
+    }
+  }
+
   img {
     width: 50px;
     height: 84px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
   }
+
   div:first-of-type {
     display: flex;
   }
+
   h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 36px;
   }
 
   form {
+    input {
+      margin-right: 30px;
+      &::placeholder {
+        color: #DDDEE5;
+      }
+    }
+
+    #line-break {
+      content: '';
+      height: 10px;
+    }
+
+    .money-input {
+      justify-content: space-around;
+      border-bottom: 1px dashed #cccccc;
+      width: 181px;
+
+      input:first-of-type {
+        width: 128px;
+        font-size: 36px;
+        margin: 0 50px 0 2px;
+        i {
+          left: 123px;
+          position: absolute;
+        }
+      }
+    }
+
+    div:first-child {
+      justify-content: space-around;
+    }
+
+    img {
+      margin: 14px 0 0 40px;
+      -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
     input:first-of-type {
       font-size: 20px;
+      width: 183px;
+    }
+
+    stuff {
+      aside {
+        color: #333333;
+        display: block;
+        margin-left: 90px;
+        &:nth-child(2) {
+          margin-left: 125px;
+          margin-top: 8px;
+        }
+        a {
+          padding: 2px 5px;
+          border-radius: 12px;
+          border: 1px dashed #ccc;
+          color: #68c3a7;
+          background: #f6f6f6;
+          font-weight: bold;
+          &:hover {
+            background: #E9E9E9;
+          }
+        }
+      }
+    }
+
+    .dates-and-add-note {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 23px;
+      a {
+        border-radius: 12px;
+        background: #f6f6f6;
+        border: 1px solid #ccc;
+        padding: 3px 6px;
+        color: #666;
+        &:hover {
+          background: #E9E9E9;
+        }
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+      a, button {
+        margin-right: 10px;
+      }
+
+      a {
+        padding: 9px 14px;
+        background: #f6f6f6;
+        border-radius: 5px;
+        border: 1px solid;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        &:hover {
+          background: #E9E9E9;
+        }
+      }
     }
   }
+}
+
+#bill-form-description {
+  border-bottom: 1px dashed #cccccc;
 }

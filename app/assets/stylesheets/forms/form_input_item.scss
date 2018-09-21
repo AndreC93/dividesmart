@@ -1,5 +1,6 @@
-.form-input-item {
+#form-input-item {
   display: inline-block;
+  padding: 0;
   padding: 0 6px 0 8px;
   background: #f6f6f6;
   border-radius: 15px;
@@ -18,6 +19,11 @@
   }
 
   button {
+    background: transparent;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    text-shadow: none;
     cursor: pointer;
     color: #aaa;
     margin: 0 0 1px 5px;

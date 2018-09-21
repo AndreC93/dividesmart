@@ -147,7 +147,7 @@ class AddBillForm extends React.Component {
       placeholder = 'Enter names or email addresses';
       perPersonAmount = this.state.balance === '' ? '0.00' : this.state.balance;
     } else {
-      inputWidth = { width: 'fit-content' };
+      inputWidth = { minWidth: '30px' };
       perPersonAmount = this.state.balance === '' ? '0.00' : Calculators.splitEqually(this.state.balance, this.state.friends.length + 1);
     }
     return (
@@ -159,10 +159,9 @@ class AddBillForm extends React.Component {
             Add a bill<button onClick={ this.props.hideAddBillForm } >x</button>
           </header>
 
-          <ErrorMessageBanner extraClass='add-bill-error-banner' message={ this.state.errorMessageBanner } close={ () => this.setState({ errorMessageBanner: '' }) } />
 
-          <div className='invite-input-container' >
-            <div>With <strong>you</strong> and:</div>
+          <div className='invite-input-container add-bill-input-container' >
+            <h5>With <strong>you</strong> and:</h5>
             { this.makePreviousInputBubbles() }
             <input type='text'
               value={ this.state.activeInput }
@@ -172,24 +171,35 @@ class AddBillForm extends React.Component {
               style={ inputWidth }
               />
           </div>
+          <div className='clear-fix'></div>
+          
+          <ErrorMessageBanner extraClass='add-bill-error-banner' message={ this.state.errorMessageBanner } close={ () => this.setState({ errorMessageBanner: '' }) } />
 
           <form onSubmit={ this.handleSubmit }>
             <div>
               <img src={ window.general } />
               <h4>
-                <input placeholder='Enter a description' onChange={ this.update('description') } />
-                <div>
-                  <i className="fas fa-dollar-sign" /><input placeholder='0.00' onChange={ this.update('balance') } />
+                <input id='bill-form-description' placeholder='Enter a description' onChange={ this.update('description') } />
+                <div className='money-input'>
+                  <i className="fas fa-dollar-sign" /><input placeholder='0.00' onChange={ this.update('balance') }  />
                 </div>
               </h4>
             </div>
 
-            <div>Paid by <a>you</a> and split <a>equally</a>.</div>
-            <div>(${ perPersonAmount }/person)</div>
+            <div id='line-break' />
 
-            <div><a>{ this.state.date }</a><a>Add notes</a></div>
+            <stuff>
+              <aside>Paid by <a>you</a> and split <a>equally</a>.</aside>
+              <aside>(${ perPersonAmount }/person)</aside>
+            </stuff>
 
-            <div><a onClick={ this.props.hideAddBillForm } >Cancel</a><button onClick={ this.handleSubmit } >Save</button></div>
+            <div id='line-break' />
+
+            <div className='dates-and-add-note' ><a>{ this.state.date }</a><a>Add notes feature to come</a></div>
+
+            <div id='line-break' />
+
+            <footer><a onClick={ this.props.hideAddBillForm } >Cancel</a><button onClick={ this.handleSubmit } >Save</button></footer>
           </form>
 
         </div>
