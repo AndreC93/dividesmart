@@ -1,5 +1,7 @@
 import React from 'react';
 import PaymentItem from './payment_item';
+import { connect } from 'react-redux';
+import { deleteBill } from '../actions/bill_actions';
 
 class BillShow extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class BillShow extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.sumUpPaymentsByUser = this.sumUpPaymentsByUser.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   sumUpPaymentsByUser() {
@@ -34,6 +37,10 @@ class BillShow extends React.Component {
     }
   }
 
+  handleDelete() {
+    this.props.deleteBill(this.props.bill.id);
+  }
+
   render () {
     if (this.props.bill.payments.length <= 0) return null;
     if (this.props.bill.payments.length > 1) {
@@ -41,12 +48,13 @@ class BillShow extends React.Component {
     }
     const renderedUser = [];
     return (
-      <div className='bill-show-container' >
-        <div className='bill-show' onClick={ this.handleClick } >
+      <div className='bill-show-container' onClick={ this.handleClick } >
+        <div className='bill-show' >
           <p>{this.props.bill.createdAt.slice(5, 10)}</p>
-          <img src={this.props.bill.category === 'General' ? window.general : null} />
+          <img src={this.props.bill.category === 'Food and drink' ? window.food : window.general } />
           <h1>{this.props.bill.description}</h1>
         </div>
+
 
         <ul style={ this.state } className='debtors' >
           {this.props.bill.payments.map( (payment) =>
@@ -58,13 +66,15 @@ class BillShow extends React.Component {
             })
           }
         </ul>
+
+        <b onClick={ this.handleDelete } >x</b>
       </div>
     );
   }
-
-  parseDate(date) {
-
-  }
 }
 
-export default BillShow;
+const mapDispatchToProps = dispatch => ({
+  deleteBill: (billId) => dispatch(deleteBill(billId)),
+});
+
+export default connect(null, mapDispatchToProps)(BillShow);

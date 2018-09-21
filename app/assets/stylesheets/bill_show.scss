@@ -1,14 +1,27 @@
 .bill-show {
   display: flex;
+  margin-top: 10px;
+  overflow: hidden;
   p {
+    margin-top: 9px;
     color: #999999;
+    white-space: nowrap;
     & + img {
       width: 21px;
       height: 35px;
       border-radius: 0;
+      margin: 0 10px;
+      -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
   }
-  overflow: hidden;
+
+  h1 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 9px;
+  }
 }
 
 .bill-show-container {
@@ -17,4 +30,30 @@
   display: flex;
   justify-content: space-between;
   min-height: 58px;
+  position: relative;
+  cursor: pointer;
+  b {
+    margin-top: 8px;
+    position: absolute;
+    left: 512px;
+    display: none;
+    cursor: pointer;
+    text-shadow: 1px 1px white;
+    color: #c00;
+    background: rgba(249,249,249,0.8);
+    font-weight: bold;
+    font-size: 24px;
+  }
+  &:hover {
+    background: rgba(249,249,249,0.8);
+    b {
+      display: block;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    h1 {
+      text-decoration: underline;
+    }
+  }
 }

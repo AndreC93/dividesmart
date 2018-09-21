@@ -47,9 +47,26 @@ class DashboardCenterBar extends React.Component {
     });
   }
 
+  filterBillsForFriends() {
+    const friendsBills = [];
+    const that = this;
+    that.props.bills.forEach( bill => {
+      if (that.props.friendsIds.includes(bill.creatorId) || that.props.user.id === bill.creatorId) {
+        const billHasAFriend = bill.payments.map( pay => pay.userId).some( userId => that.props.friendsIds.includes(userId.toString()) );
+        if (billHasAFriend) {
+          friendsBills.push(bill);
+        }
+      }
+    } );
+    return friendsBills.map( (bill, i) => (
+      <BillShow bill={bill} key={i} />
+    ));
+  }
+
   render () {
     if (!this.props.user) return null;
-    const balance = this.state.owe + this.state.owed;
+    const balance = Math.round((this.state.owe + this.state.owed) * 100) / 100 ;
+    const redOrGreen = balance < 0 ? {color: '#ff652f'} : {};
     return (
       <div>
         <header>
@@ -66,16 +83,14 @@ class DashboardCenterBar extends React.Component {
 
         <div className='balance-bar' >
           <header>
-            <div>total balance: {balance < 0 ? '-' : null}${Math.abs(balance)}</div>
-            <div>you owe ${Math.abs(this.state.owe)}</div>
-            <div>you are owed ${this.state.owed}</div>
+            <div>total balance: <b style={ redOrGreen } >{balance < 0 ? '-' : null}${Math.abs(balance)}</b></div>
+            <div>you owe: <b>${Math.abs(this.state.owe)}</b></div>
+            <div>you are owed: <b>${this.state.owed}</b></div>
           </header>
         </div>
 
         <AddBillForm />
-        { this.props.bills ? this.props.bills.map( (bill, i) => (
-          <BillShow bill={bill} key={i} />
-        )) : null }
+        { this.props.bills ? this.filterBillsForFriends() : null }
       </div>
     );
   }
@@ -85,6 +100,7 @@ const mapStateToProps = (state, ownProps) => ({
   user: state.entities.users[state.session.currentUserId],
   modal: state.modal.addBillForm,
   bills: grabAllBills(state),
+  friendsIds: Object.keys(state.entities.users).filter( id => id != state.session.currentUserId),
 });
 
 const mapDispatchToProps = dispatch => ({

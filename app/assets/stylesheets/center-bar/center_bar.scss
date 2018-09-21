@@ -85,4 +85,17 @@
       }
     }
   }
+
+  .balance-bar {
+    font-size: 13px;
+    color: #999;
+    b {
+      color: #5bc5a7;
+    }
+    div:nth-of-type(2) {
+      b {
+        color: #ff652f;
+      }
+    }
+  }
 }

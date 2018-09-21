@@ -7,6 +7,15 @@ class PaymentItem extends React.Component {
     return num < 0 ? 'owes' : 'paid';
   }
 
+  padZeros() {
+    let num = `${(this.props.amount)/100}`;
+    if (!num.includes('.')) {
+      return num + '.00';
+    } else {
+      return num;
+    }
+  }
+
   render () {
     if (!this.props.usernames[this.props.payment.userId] || isNaN(this.props.amount) || !this.props.show) return null;
     return (
@@ -14,7 +23,7 @@ class PaymentItem extends React.Component {
         <img src={ window.defaultAvatar } />
         <div>
           <strong>{this.props.usernames[this.props.payment.userId].username}</strong> { this.checkIfDebt(this.props.amount) } $
-            { (this.props.amount)/100 }
+            { this.padZeros() }
         </div>
       </div>
     );
