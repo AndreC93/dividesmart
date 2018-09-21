@@ -2,7 +2,7 @@ class Api::BillsController < ApplicationController
   def create
     full_bill_params = bill_params
     full_bill_params[:creator_id] = current_user.id
-    full_bill_params[:balance_cents] = params[:bill][:balanceCents]
+    full_bill_params[:balance_cents] = params[:bill][:balanceCents].to_i
     @bill = Bill.new(full_bill_params)
     if @bill.save
       make_payments(@bill.id, params[:bill][:participants])
