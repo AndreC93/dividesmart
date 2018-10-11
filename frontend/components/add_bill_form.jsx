@@ -70,8 +70,9 @@ class AddBillForm extends React.Component {
         friendsUsernames[friend.username] = [friend.username, friend.id];
         friendsEmails[friend.email] = [friend.email, friend.id];
       });
+      const repeatedName = !this.state.friends.every( friend => friend[0] !== input);
 
-      if ( friendsUsernames[input] || friendsEmails[input] ) {
+      if ( (friendsUsernames[input] || friendsEmails[input]) && !repeatedName) {
         if ( friendsUsernames[input] ) {
           this.setState({
             friends: this.state.friends.concat([[
@@ -87,6 +88,11 @@ class AddBillForm extends React.Component {
             activeInput: '',
           });
         }
+      } else if (repeatedName){
+        this.setState({
+          activeInput: '',
+          errorMessageBanner: 'You already added that friend to this bill',
+        });
       } else {
         this.setState({
           activeInput: '',
