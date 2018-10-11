@@ -17,19 +17,29 @@ class DashboardCenterBar extends React.Component {
       owed: 0,
     };
     this.calculateDebts = this.calculateDebts.bind(this);
+    this.numberOfBills = undefined;
   }
-
+  
   componentDidMount() {
     this.props.fetchFriend(this.props.user.id);
     this.props.fetchBills();
     setTimeout(() => {
-      if (this.props.bills) this.calculateDebts();
+      if (this.props.bills) {
+        this.numberOfBills = this.props.bills.length;
+        this.calculateDebts();
+      }
     }, 350);
   }
 
   calculateDebts() {
     let owe = 0;
     let owed = 0;
+    if (!this.props.bills) {
+      return this.setState({
+        owe: 0,
+        owed: 0,
+      });
+    }
     this.props.bills.forEach( bill => {
       bill.payments.forEach( payment => {
         if (this.props.user.id === payment.userId) {
@@ -67,7 +77,10 @@ class DashboardCenterBar extends React.Component {
 
   render () {
     if (!this.props.user) return null;
-    // if (this.props.bills)
+    if (this.numberOfBills && this.props.location.pathname === "/dashboard" && this.numberOfBills !== this.props.bills.length) {
+      setTimeout( () => this.calculateDebts(), 50); 
+      this.numberOfBills = this.props.bills.length;
+    }
     const balance = Math.round((this.state.owe + this.state.owed) * 100) / 100 ;
     const redOrGreen = balance < 0 ? {color: '#ff652f'} : {};
     return (

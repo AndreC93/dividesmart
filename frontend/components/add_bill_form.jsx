@@ -69,41 +69,6 @@ class AddBillForm extends React.Component {
     const input = e.target.value;
     if (e.key === 'Enter' && input.length > 0) {
       this.inputFriendIntoState(input);
-      // const friendsUsernames = {};
-      // const friendsEmails = {};
-      // this.props.friends.forEach( friend => {
-      //   friendsUsernames[friend.username] = [friend.username, friend.id];
-      //   friendsEmails[friend.email] = [friend.email, friend.id];
-      // });
-      // const repeatedName = !this.state.friends.every( friend => friend[0] !== input);
-
-      // if ( (friendsUsernames[input] || friendsEmails[input]) && !repeatedName) {
-      //   if ( friendsUsernames[input] ) {
-      //     this.setState({
-      //       friends: this.state.friends.concat([[
-      //         input, friendsUsernames[input][1],
-      //       ]]),
-      //       activeInput: '',
-      //     });
-      //   } else {
-      //     this.setState({
-      //       friends: this.state.friends.concat([[
-      //         input, friendsEmails[input][1],
-      //       ]]),
-      //       activeInput: '',
-      //     });
-      //   }
-      // } else if (repeatedName){
-      //   this.setState({
-      //     activeInput: '',
-      //     errorMessageBanner: 'You already added that friend to this bill',
-      //   });
-      // } else {
-      //   this.setState({
-      //     activeInput: '',
-      //     errorMessageBanner: 'Please select one of your friends',
-      //   });
-      // }
     }
   }
 
