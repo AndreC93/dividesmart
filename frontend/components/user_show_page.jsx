@@ -33,7 +33,7 @@ class UserShowPage extends React.Component {
         </header>
 
         <div className='user-show-transactions' >
-          <div><header>September 2018</header></div>
+          <div><header>Bills with {this.props.user.username}</header></div>
         </div>
 
         <AddBillForm />

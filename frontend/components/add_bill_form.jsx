@@ -29,6 +29,8 @@ class AddBillForm extends React.Component {
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
     this.deleteInput = this.deleteInput.bind(this);
     this.makeParticipants = this.makeParticipants.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   update(field) {
@@ -54,8 +56,10 @@ class AddBillForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (!this.state.friends.length) return this.setState({ errorMessageBanner: 'Please select a friend' });
     if (this.calculatedPerPerson()) {
       this.props.hideAddBillForm();
+      setTimeout(this.handleClose, 500);
     } else {
       this.setState({ errorMessageBanner: 'Invalid Amount' });
     }
@@ -64,41 +68,80 @@ class AddBillForm extends React.Component {
   handleInputSubmit(e) {
     const input = e.target.value;
     if (e.key === 'Enter' && input.length > 0) {
-      const friendsUsernames = {};
-      const friendsEmails = {};
-      this.props.friends.forEach( friend => {
-        friendsUsernames[friend.username] = [friend.username, friend.id];
-        friendsEmails[friend.email] = [friend.email, friend.id];
-      });
-      const repeatedName = !this.state.friends.every( friend => friend[0] !== input);
+      this.inputFriendIntoState(input);
+      // const friendsUsernames = {};
+      // const friendsEmails = {};
+      // this.props.friends.forEach( friend => {
+      //   friendsUsernames[friend.username] = [friend.username, friend.id];
+      //   friendsEmails[friend.email] = [friend.email, friend.id];
+      // });
+      // const repeatedName = !this.state.friends.every( friend => friend[0] !== input);
 
-      if ( (friendsUsernames[input] || friendsEmails[input]) && !repeatedName) {
-        if ( friendsUsernames[input] ) {
-          this.setState({
-            friends: this.state.friends.concat([[
-              input, friendsUsernames[input][1],
-            ]]),
-            activeInput: '',
-          });
-        } else {
-          this.setState({
-            friends: this.state.friends.concat([[
-              input, friendsEmails[input][1],
-            ]]),
-            activeInput: '',
-          });
-        }
-      } else if (repeatedName){
+      // if ( (friendsUsernames[input] || friendsEmails[input]) && !repeatedName) {
+      //   if ( friendsUsernames[input] ) {
+      //     this.setState({
+      //       friends: this.state.friends.concat([[
+      //         input, friendsUsernames[input][1],
+      //       ]]),
+      //       activeInput: '',
+      //     });
+      //   } else {
+      //     this.setState({
+      //       friends: this.state.friends.concat([[
+      //         input, friendsEmails[input][1],
+      //       ]]),
+      //       activeInput: '',
+      //     });
+      //   }
+      // } else if (repeatedName){
+      //   this.setState({
+      //     activeInput: '',
+      //     errorMessageBanner: 'You already added that friend to this bill',
+      //   });
+      // } else {
+      //   this.setState({
+      //     activeInput: '',
+      //     errorMessageBanner: 'Please select one of your friends',
+      //   });
+      // }
+    }
+  }
+
+  inputFriendIntoState(input) {
+    const friendsUsernames = {};
+    const friendsEmails = {};
+    this.props.friends.forEach(friend => {
+      friendsUsernames[friend.username] = [friend.username, friend.id];
+      friendsEmails[friend.email] = [friend.email, friend.id];
+    });
+    const repeatedName = !this.state.friends.every(friend => friend[0] !== input);
+
+    if ((friendsUsernames[input] || friendsEmails[input]) && !repeatedName) {
+      if (friendsUsernames[input]) {
         this.setState({
+          friends: this.state.friends.concat([[
+            input, friendsUsernames[input][1],
+          ]]),
           activeInput: '',
-          errorMessageBanner: 'You already added that friend to this bill',
         });
       } else {
         this.setState({
+          friends: this.state.friends.concat([[
+            input, friendsEmails[input][1],
+          ]]),
           activeInput: '',
-          errorMessageBanner: 'Please select one of your friends',
         });
       }
+    } else if (repeatedName) {
+      this.setState({
+        activeInput: '',
+        errorMessageBanner: 'You already added that friend to this bill',
+      });
+    } else {
+      this.setState({
+        activeInput: '',
+        errorMessageBanner: 'Please select one of your friends',
+      });
     }
   }
 
@@ -106,6 +149,10 @@ class AddBillForm extends React.Component {
     this.setState({
       friends: this.state.friends.filter( (el, i) => i != index),
     });
+  }
+
+  handleBlur(e) {
+    if (e.target.value !== '') this.inputFriendIntoState(e.target.value);
   }
 
   calculatedPerPerson() {
@@ -190,6 +237,22 @@ class AddBillForm extends React.Component {
     }
   }
 
+  handleClose() {
+    this.props.hideAddBillForm();
+    this.setState({
+      category: 'General',
+      friends: [],
+      activeInput: '',
+      description: '',
+      balance: '',
+      perPerson: 0,
+      date: `${this.date.toDateString()}`,
+      errorMessageBanner: '',
+      participants: [],
+      creditor: this.props.currentUser.id,
+    });
+  }
+
   render () {
     if (!this.props.modal) return null;
     let placeholder;
@@ -205,11 +268,11 @@ class AddBillForm extends React.Component {
 
     return (
       <div className='add-bill-form-container' >
-        <div className='modal-backdrop' onClick={  this.props.hideAddBillForm } />
+        <div className='modal-backdrop' onClick={  this.handleClose } />
 
         <div className='modal add-friend-form add-bill-form' >
           <header>
-            Add a bill<button onClick={ this.props.hideAddBillForm } >x</button>
+            Add a bill<button onClick={ this.handleClose } >x</button>
           </header>
 
 
@@ -222,6 +285,7 @@ class AddBillForm extends React.Component {
               placeholder={ placeholder }
               onKeyPress= { this.handleInputSubmit }
               onKeyDown= { this.handleBackspace }
+              onBlur= { this.handleBlur }
               style={ inputWidth }
               />
           </div>
@@ -268,7 +332,7 @@ class AddBillForm extends React.Component {
 
             <div id='line-break' />
 
-            <footer><a onClick={ this.props.hideAddBillForm } >Cancel</a><button onClick={ this.handleSubmit } >Save</button></footer>
+            <footer><a onClick={ this.handleClose } >Cancel</a><button onClick={ this.handleSubmit } >Save</button></footer>
           </form>
 
         </div>

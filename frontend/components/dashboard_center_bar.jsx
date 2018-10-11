@@ -41,10 +41,12 @@ class DashboardCenterBar extends React.Component {
         }
       });
     });
-    this.setState({
-      owe: owe/100,
-      owed: owed/100,
-    });
+    if (owe !== this.state.owe || owed !== this.state.owed) {
+      this.setState({
+        owe: owe/100,
+        owed: owed/100,
+      });
+    }
   }
 
   filterBillsForFriends() {
@@ -65,6 +67,7 @@ class DashboardCenterBar extends React.Component {
 
   render () {
     if (!this.props.user) return null;
+    // if (this.props.bills)
     const balance = Math.round((this.state.owe + this.state.owed) * 100) / 100 ;
     const redOrGreen = balance < 0 ? {color: '#ff652f'} : {};
     return (

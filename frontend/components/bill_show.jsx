@@ -7,7 +7,7 @@ class BillShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxHeight: 0
+      maxHeight: 0,
     };
     this.handleClick = this.handleClick.bind(this);
     this.sumUpPaymentsByUser = this.sumUpPaymentsByUser.bind(this);
