@@ -11,10 +11,10 @@ class Footer extends React.Component {
           </main>
 
           <ul>
-            <li>About | </li>
-            <li>Calculators | </li>
-            <li>Terms | </li>
-            <li>Contact us</li>
+            <li><a href='https://www.andrechow.com/' >About</a> | </li>
+            <li><a href='https://www.linkedin.com/in/andre-chow/' >LinkedIn</a> | </li>
+            <li><a href='https://github.com/AndreC93' >Github</a> | </li>
+            <li><a href='mailto:andrechow93@gmail.com' >Contact Me</a></li>
           </ul>
         </div>
       </div>
