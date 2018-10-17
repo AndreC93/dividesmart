@@ -20,5 +20,5 @@ Join us and you'll never have to calculate bills again.
 Users can like and unlike photos on the site.
 The like count is displayed below each photo.
 
-### User Dashboard
+### Dashboard
 
