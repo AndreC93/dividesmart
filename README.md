@@ -17,8 +17,10 @@ Join us and you'll never have to calculate bills again.
 * Users can add other users as friends, using either their username or email address. 
 
 ### Bills
-Users can like and unlike photos on the site.
-The like count is displayed below each photo.
+* Users can create bills and delete bills.
+* Users can only add bills with current friends.
+* Users can see all their bills and the associated friends on each bill.
+* Dashboard shows current balance as well as the breakdown between how much is debt or credit.
 
 ### Dashboard
 
