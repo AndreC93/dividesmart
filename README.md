@@ -20,7 +20,5 @@ Join us and you'll never have to calculate bills again.
 * Users can create bills and delete bills.
 * Users can only add bills with current friends.
 * Users can see all their bills and the associated friends on each bill.
-* Dashboard shows current balance as well as the breakdown between how much is debt or credit.
-
-### Dashboard
-
+* Dashboard shows current balance, debt amount and credit amount.
+* 
