@@ -11,7 +11,8 @@ Join us and you'll never have to calculate bills again.
 
 ### User Authentication
 * Users can sign up or log into an existing account.
-* A user explore the site using the Demo Login prior to joining the site. 
+* Error messages for invalid credientials during log in and sign up.
+* Demo Login button for user to see the site before joining. 
 
 ### Friends
 * Users can add other users as friends, using either their username or email address. 
