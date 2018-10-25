@@ -27,3 +27,7 @@ Join us and you'll never have to calculate bills again.
 * Bill show pages show all friends that are associated with the bill and how much each of them owe or paid to the bill.
 * Bills will be split and remaining cents will be distributed randomly one at a time. 
 * Bills with users that are no longer friends will not be shown. 
+
+### Calculators
+* Bills can be split equally. 
+* When creating a bill, the user who paid for the bill can be specified and credited, while all other users will be added as debtors to the bill. 
