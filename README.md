@@ -16,10 +16,14 @@ Join us and you'll never have to calculate bills again.
 
 ### Friends
 * Users can add other users as friends, using either their username or email address. 
+* Users can delete a friend on friend's show page.
 
 ### Bills
 * Users can create bills and delete bills.
 * Users can only add bills with current friends.
 * Users can see all their bills and the associated friends on each bill.
 * Dashboard shows current balance, debt amount and credit amount.
-* 
+* Friend show pages only show bills between that user and the current user.
+* Bill show pages show all friends that are associated with the bill and how much each of them owe or paid to the bill.
+* Bills will be split and remaining cents will be distributed randomly one at a time. 
+* Bills with users that are no longer friends will not be shown. 
