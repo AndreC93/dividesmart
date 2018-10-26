@@ -3,7 +3,7 @@ import SplashImages from './splash_images';
 import { Link } from 'react-router-dom';
 import Footer from './footer';
 
-class SplashPage extends React.Component {
+class SplashPage extends React.PureComponent {
   render () {
     return (
       <div>
