@@ -16,6 +16,7 @@ Join us and you'll never have to calculate bills again.
 
 ### Friends
 * Users can add other users as friends, using either their username or email address. 
+* Friends will show up on the sidebar. 
 * Users can delete a friend on friend's show page.
 
 ### Bills
