@@ -34,3 +34,6 @@ Join us and you'll never have to calculate bills again.
 * When creating a bill, the user who paid for the bill can be specified and credited, while all other users will be added as debtors to the bill. 
 * Future calculators to be added, including splitting by percentages, shares and unequally. 
 
+### Features in Progress 
+* Commenting on bills
+* Transaction History
