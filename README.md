@@ -35,5 +35,6 @@ Join us and you'll never have to calculate bills again.
 * Future calculators to be added, including splitting by percentages, shares and unequally. 
 
 ### Features in Progress 
-* Commenting on bills
-* Transaction History
+* Settling of bills, adding payments and users to bills
+* Commenting on bills - by users in the bill
+* Transaction History - all activity, such as friending, bill creating and editing, etc.
