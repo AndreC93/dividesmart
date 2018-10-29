@@ -37,4 +37,4 @@ Join us and you'll never have to calculate bills again.
 ### Features in Progress 
 * Settling of bills, adding payments and users to bills
 * Commenting on bills - by users in the bill
-* Transaction History - all activity, such as friending, bill creating and editing, etc.
+* Transaction History - all activity, such as friending, bill creation and editing, 
