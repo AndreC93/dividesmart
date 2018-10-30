@@ -23,6 +23,7 @@ Join us and you'll never have to calculate bills again.
 * Users can create bills and delete bills.
 * Users can only add bills with current friends.
 * Users can see all their bills and the associated friends on each bill.
+* Users can specify type of bill, ex. Food or General
 * Dashboard shows current balance, debt amount and credit amount.
 * Friend show pages only show bills between that user and the current user.
 * Bill show pages show all friends that are associated with the bill and how much each of them owe or paid to the bill.
