@@ -11,3 +11,7 @@ function regexCheck(balance) {
     return balance.replace(/[^0-9.]+/, '');
   }
 }
+
+export const splitByPercent = (balance, percent) => {
+  return Math.round(balance * (percent/100));
+};
