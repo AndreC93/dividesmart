@@ -16,13 +16,20 @@ class PaymentItem extends React.Component {
     }
   }
 
+  shortenName(str) {
+    if (str.length > 8) {
+      return str.slice(0, 8) + '.. ';
+    } 
+    return str;
+  }
+
   render () {
     if (!this.props.usernames[this.props.payment.userId] || isNaN(this.props.amount) || !this.props.show) return null;
     return (
       <div className='payment-item' >
         <img src={ window.defaultAvatar } />
         <div>
-          <strong>{this.props.usernames[this.props.payment.userId].username}</strong> { this.checkIfDebt(this.props.amount) } $
+          <strong>{this.shortenName(this.props.usernames[this.props.payment.userId].username)}</strong> { this.checkIfDebt(this.props.amount) } $
             { this.padZeros() }
         </div>
       </div>

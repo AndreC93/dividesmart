@@ -8,6 +8,7 @@ class BillShow extends React.Component {
     super(props);
     this.state = {
       maxHeight: 0,
+      showButtons: false,
     };
     this.handleClick = this.handleClick.bind(this);
     this.sumUpPaymentsByUser = this.sumUpPaymentsByUser.bind(this);
@@ -41,6 +42,12 @@ class BillShow extends React.Component {
     this.props.deleteBill(this.props.bill.id);
   }
 
+  toggleButtons() {
+    this.setState({
+      showButtons: true,
+    });
+  }
+
   render () {
     if (this.props.bill.payments.length <= 0) return null;
     if (this.props.bill.payments.length > 1) {
@@ -66,12 +73,13 @@ class BillShow extends React.Component {
             })
           }
         </ul>
-
+        <i className="fas fa-cog"></i>
         <b onClick={ this.handleDelete } >x</b>
       </div>
     );
   }
 }
+//<b onClick={ this.handleDelete } >x</b>
 
 const mapDispatchToProps = dispatch => ({
   deleteBill: (billId) => dispatch(deleteBill(billId)),
