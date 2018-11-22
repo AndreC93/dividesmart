@@ -54,6 +54,7 @@ class BillShow extends React.Component {
       var summedPayments = this.sumUpPaymentsByUser();
     }
     const renderedUser = [];
+    
     return (
       <div className='bill-show-container' onClick={ this.handleClick } >
         <div className='bill-show' >
