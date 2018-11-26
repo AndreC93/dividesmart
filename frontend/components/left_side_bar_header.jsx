@@ -30,15 +30,15 @@ class LeftSideBarHeader extends React.Component {
           <i id='dashIcons' style={ imageHighlight } />
           <a> Dashboard</a>
         </li>
-        <li style={ highlight2 } onClick={ () => (
-            this.props.history.push('/activity')) } >
-          <i className="fas fa-flag" />
-          <a> Recent activity</a>
-        </li>
       </div>
     );
   }
 }
+          // <li style={ highlight2 } onClick={ () => (
+          //     this.props.history.push('/activity')) } >
+          //   <i className="fas fa-flag" />
+          //   <a> Recent activity</a>
+          // </li>
           // <li style={ highlight3 } onClick={ () => (
           //     this.props.history.push('/all')) } >
           //   <i className="fas fa-list-ul" />

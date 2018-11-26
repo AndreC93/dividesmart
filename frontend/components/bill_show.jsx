@@ -11,6 +11,7 @@ class BillShow extends React.Component {
       showButtons: false,
     };
     this.handleClick = this.handleClick.bind(this);
+    this.toggleButtons = this.toggleButtons.bind(this);
     this.sumUpPaymentsByUser = this.sumUpPaymentsByUser.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -26,8 +27,10 @@ class BillShow extends React.Component {
     return summedPayments;
   }
 
-  handleClick() {
-    if (this.state.maxHeight === 0) {
+  handleClick(e) {
+    if (e.target.className === 'fas fa-cog') {
+      this.toggleButtons();
+    } else if (this.state.maxHeight === 0) {
       this.setState({
         maxHeight: 'fit-content',
       });
@@ -56,7 +59,7 @@ class BillShow extends React.Component {
     const renderedUser = [];
     
     return (
-      <div className='bill-show-container' onClick={ this.handleClick } >
+      <div className='bill-show-container' onClick={ (e) => this.handleClick(e) } >
         <div className='bill-show' >
           <p>{this.props.bill.createdAt.slice(5, 10)}</p>
           <img src={this.props.bill.category === 'Food and drink' ? window.food : window.general } />
@@ -74,8 +77,8 @@ class BillShow extends React.Component {
             })
           }
         </ul>
-        <i className="fas fa-cog"></i>
-        <b onClick={ this.handleDelete } >x</b>
+        <i className="fas fa-cog" ></i>
+        <b onClick={this.handleDelete} >x</b>
       </div>
     );
   }
