@@ -7,7 +7,6 @@ class DropDownMenu extends React.Component {
   render () {
     return (
       <ul className='drop-down-menu' >
-        <li>Your account</li>
         <li onClick={ () => this.props.logout().then( () => this.props.history.push('/')) } >Log out</li>
       </ul>
     );
