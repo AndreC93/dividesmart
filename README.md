@@ -27,7 +27,7 @@ Join us and you'll never have to calculate bills again.
 * Dashboard shows current balance, debt amount and credit amount.
 * Friend show pages only show bills between that user and the current user.
 * Bill show pages show all friends that are associated with the bill and how much each of them owe or paid to the bill.
-* Bills will be split and remaining cents will be distributed randomly one at a time. 
+* Bills will be split and remaining cents will be distributed amongst participants fairly. 
 * Bills with users that are no longer friends will not be shown. 
 
 ### Calculators
