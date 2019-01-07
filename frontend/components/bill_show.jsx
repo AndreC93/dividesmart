@@ -77,12 +77,12 @@ class BillShow extends React.Component {
             })
           }
         </ul>
-        <i className="fas fa-cog" ></i>
         <b onClick={this.handleDelete} >x</b>
       </div>
     );
   }
 }
+{/* <i className="fas fa-cog" ></i> */}
 //<b onClick={ this.handleDelete } >x</b>
 
 const mapDispatchToProps = dispatch => ({

@@ -59,11 +59,11 @@
   }
   &:hover {
     background: rgba(249,249,249,0.8);
-    i {
+    b {
       display: block;
       &:hover {
-        color: #433f3f;
-        // text-decoration: underline;
+        color: #a90a0a;
+        text-decoration: underline;
       }
     }
     h1 {
